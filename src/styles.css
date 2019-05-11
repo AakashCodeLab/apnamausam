@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+
+body{
+  /*
+  background:url('https://res.cloudinary.com/ddqhcwp8j/image/upload/v1469646986/mist_fcjita.jpg');
+  */
+
+  background-repeat: no-repeat;
+  background-size: cover;
+}
