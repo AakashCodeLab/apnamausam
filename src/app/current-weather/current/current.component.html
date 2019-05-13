@@ -1,0 +1,25 @@
+<app-header-nav  (messageEvent)="receiveMessage($event)" ></app-header-nav>
+<div class="container" align=center>
+
+  <div class="" style="display: flex;justify-content: center; align-items: center;">
+    <div class="col-md-6 col-xs-8 ">
+      <div class="weather text-center">
+        <h2 class="temp">{{this.Math.round(weatherdata1.main.temp - 273)}}&deg;</h2>
+        <h3><span class="city">{{weatherdata1.name}}</span>, <span class="country">{{weatherdata1.sys.country}}</span></h3>
+        <div class="iconpic">
+          <img height=100px; width=100px src="https://openweathermap.org/img/w/{{weatherdata1.weather[0].icon}}.png" class='img img-responsive center-block'>
+        </div>
+        <h4 class="weatherDetail">{{weatherdata1.weather["0"].description}}</h4>
+
+
+
+        <div class="toggle" id="c">
+          <button type="button" class="btn btn-danger btn-lg">Toggle temperature</button>
+        </div>
+      </div><!--weather-->
+    </div>
+  </div><!--row-->
+  <br/>
+</div>
+
+
