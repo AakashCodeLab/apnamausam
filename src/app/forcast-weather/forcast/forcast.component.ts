@@ -43,7 +43,14 @@ export class ForcastComponent implements OnInit {
   getCurrentWeatherInfo(lat, lng, type) {
     this.weatherdataservice.getWeatherDataBylatLon(lat, lng, 'forcast').subscribe(data => {
         console.log(data);
-        this.weatherdata1 = data;
+
+
+        for (let i = 0; i < data.list.length; i = i + 8) {
+        const forecastWeather = data.list[i];
+        // console.log(forecastWeather);
+        this.forecast.push(forecastWeather);
+      }
+        console.log( this.forecast);
       }
     );
   }
@@ -65,8 +72,8 @@ export class ForcastComponent implements OnInit {
           console.log(data);
           this.weatherdata1 = data;
 
-          for (let i=0; i < data.list.length;i= i+8){
-          const forecastWeather = data[i];
+          for (let i = 0; i < data.list.length; i = i + 8) {
+          const forecastWeather = data.list[i];
           // console.log(forecastWeather);
           this.forecast.push(forecastWeather);
         }
