@@ -22,7 +22,7 @@ export class ForcastComponent implements OnInit {
     },
     weather: [{description: ''}]
   };
-
+  forecast = [];
   constructor(private weatherdataservice: WeatherDataService) {
     this.Math = Math;
   }
@@ -47,6 +47,8 @@ export class ForcastComponent implements OnInit {
       }
     );
   }
+
+
   receiveMessage($event) {
     console.log('from forcast', $event);
     this.lat = $event.lat;
@@ -62,10 +64,17 @@ export class ForcastComponent implements OnInit {
       this.weatherdataservice.getWeatherDataBylatLon(this.lat, this.lng, 'forcast' ).subscribe(data => {
           console.log(data);
           this.weatherdata1 = data;
+
+          for (let i=0; i < data.list.length;i= i+8){
+          const forecastWeather = data[i];
+          // console.log(forecastWeather);
+          this.forecast.push(forecastWeather);
+        }
+          console.log( this.forecast);
         }
       );
     }
-
+/*https://github.com/FreeCodeCamp-SLC/weather-ng2/blob/master/src/app/forecast/forecast.component.ts*/
 
   }
 }

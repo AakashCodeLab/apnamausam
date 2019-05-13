@@ -1,3 +1,10 @@
 p{
   color:white !important;
 }
+.card{
+  overflow: hidden;
+  min-height: 300px;
+  max-height: 100%;
+  border-radius: 5px;
+  position: relative;
+}
