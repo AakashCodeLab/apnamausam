@@ -43,40 +43,11 @@
 </div>
     <div class="" style="border: 1px solid #fff;height: 70px;"></div>
     <div class="row col-sm-8 d-flex" style="justify-content: space-evenly">
-      <div>
-        <p>Monday</p>
-        <p>image</p>
-        <p>32 &deg;C</p>
-      </div>
-      <div>
-        <p>Monday</p>
-        <p>image</p>
-        <p>32 &deg;C</p>
-      </div>
-      <div>
-        <p>Monday</p>
-        <p>image</p>
-        <p>32 &deg;C</p>
-      </div>
-      <div>
-        <p>Monday</p>
-        <p>image</p>
-        <p>32 &deg;C</p>
-      </div>
-      <div>
-        <p>Monday</p>
-        <p>image</p>
-        <p>32 &deg;C</p>
-      </div>
-      <div>
-        <p>Monday</p>
-        <p>image</p>
-        <p>32 &deg;C</p>
-      </div>
-      <div>
-        <p>Monday</p>
-        <p>image</p>
-        <p>32 &deg;C</p>
+      <div *ngFor="let weather of forecast" >
+        <p>{{weather.dt_txt| date : 'EEEE '}}</p>
+        <img height=100px; width=100px src="https://openweathermap.org/img/w/{{weather.weather[0].icon}}.png" class='img img-responsive center-block'>
+
+        <p>{{weather.main.temp}} &deg;C</p>
       </div>
     </div>
   </div>
