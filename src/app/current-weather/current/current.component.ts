@@ -11,6 +11,8 @@ export class CurrentComponent implements OnInit {
   lng: any = 72.9425;
   city = 'mumbai';
   Math: any;
+  location;
+  mapurl;
   weatherdata1 = {
     name: null,
     main: {
@@ -31,12 +33,20 @@ export class CurrentComponent implements OnInit {
       navigator.geolocation.getCurrentPosition(position => {
         this.lat = position.coords.latitude;
         this.lng = position.coords.longitude;
-
+        this.getCurrentLocation(this.lat, this.lng);
         this.getCurrentWeatherInfo(this.lat, this.lng, 'current' );
       });
     } else {
       this.getCurrentWeatherInfo(this.lat, this.lng, 'current' );
     }
+  }
+  getCurrentLocation(lat, lng) {
+    this.weatherdataservice.getCurrentLocation(lat, lng).subscribe(data => {
+        console.log(data);
+        this.location = data.results[0].locations[0].adminArea5;
+        this.mapurl = data.results[0].locations[0].mapUrl;
+      }
+    );
   }
 
   getCurrentWeatherInfo(lat, lng, type) {
