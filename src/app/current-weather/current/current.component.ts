@@ -9,6 +9,7 @@ import {WeatherDataService} from '../../services/weather-service.service';
 export class CurrentComponent implements OnInit {
   lat: any = 19.1726;
   lng: any = 72.9425;
+  currentTimestamp;
   city = 'mumbai';
   Math: any;
   location;
@@ -16,12 +17,12 @@ export class CurrentComponent implements OnInit {
   weatherdata1 = {
     name: null,
     main: {
-      temp: '',
+      temp: null,
     },
     sys: {
       country: ''
     },
-    weather: [{description: ''}]
+    weather: [{description: null,icon:null}]
   };
 
   constructor(private weatherdataservice: WeatherDataService) {
@@ -29,6 +30,7 @@ export class CurrentComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.currentTimestamp=new Date().toLocaleTimeString();
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         this.lat = position.coords.latitude;

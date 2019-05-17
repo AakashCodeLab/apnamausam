@@ -10,18 +10,46 @@ export class ForcastComponent implements OnInit {
 
   lat: any = 19.1726;
   lng: any = 72.9425;
+  currentTimestamp;
+  currentDate;
+  lastUpdateAt;
   city = 'mumbai';
   location;
   Math: any;
-  weatherdata1 = {
+  currentWeather = {
     name: null,
     main: {
-      temp: '',
+      temp: null,
+      temp_min:null,
+      temp_max:null ,
+      pressure:null,
+      humidity:null
     },
     sys: {
       country: ''
     },
-    weather: [{description: ''}]
+    weather: [{description: null,id:null,icon:null}],
+    wind:{
+      speed:''
+    }
+  };
+
+
+
+  weatherdata1 = {
+    name: null,
+    main: {
+      temp: null,
+      pressure:null,
+      humidity:null
+    },
+    sys: {
+      country: ''
+    },
+    weather: [{description: null}],
+    wind:{
+      speed:''
+    }
   };
   forecast = [];
   constructor(private weatherdataservice: WeatherDataService) {
@@ -29,15 +57,25 @@ export class ForcastComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.lastUpdateAt=new Date().toLocaleString();
+    setInterval(() => {      
+      this.currentTimestamp=new Date().toLocaleTimeString();
+    }, 1000);
+    this.currentDate=new Date().toDateString();
+console.log(this.currentDate)
+
+   
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         this.lat = position.coords.latitude;
         this.lng = position.coords.longitude;
         this.getCurrentLocation(this.lat, this.lng);
         this.getCurrentWeatherInfo(this.lat, this.lng, 'current' );
+        this.getForcastWeatherInfo(this.lat, this.lng, 'forcast' );
       });
     } else {
       this.getCurrentWeatherInfo(this.lat, this.lng, 'current' );
+      this.getForcastWeatherInfo(this.lat, this.lng, 'forcast' );
     }
   }
   getCurrentLocation(lat, lng) {
@@ -49,6 +87,17 @@ export class ForcastComponent implements OnInit {
   }
 
   getCurrentWeatherInfo(lat, lng, type) {
+    this.weatherdataservice.getWeatherDataBylatLon(lat, lng, type).subscribe(data => {
+        this.currentWeather = data;
+        console.log('current',this.currentWeather);
+      }
+    );
+  }
+
+
+
+
+  getForcastWeatherInfo(lat, lng, type) {
     this.weatherdataservice.getWeatherDataBylatLon(lat, lng, 'forcast').subscribe(data => {
         console.log(data);
 
@@ -91,5 +140,10 @@ export class ForcastComponent implements OnInit {
     }
 /*https://github.com/FreeCodeCamp-SLC/weather-ng2/blob/master/src/app/forecast/forecast.component.ts*/
 
+  }
+
+  refreshData(){
+    this.lastUpdateAt=new Date().toLocaleString();
+    this.getCurrentWeatherInfo(this.lat, this.lng, 'current' );
   }
 }

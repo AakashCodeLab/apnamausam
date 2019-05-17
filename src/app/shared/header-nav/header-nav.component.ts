@@ -22,12 +22,14 @@ requestObj = {
     lng: null,
     weatherType: '',
     city: '',
+    currentTime:new Date().toLocaleTimeString()
 }
 
 
 
   ngOnInit() {
     console.log(this.router.url);
+   
     /*
     $(document).ready(function(){
       // Call Geo Complete
