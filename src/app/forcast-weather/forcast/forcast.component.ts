@@ -17,6 +17,9 @@ export class ForcastComponent implements OnInit {
   location;
   Math: any;
   currentWeather = {
+    coord:{
+      lon:null,
+      lat:null},
     name: null,
     main: {
       temp: null,
@@ -34,23 +37,6 @@ export class ForcastComponent implements OnInit {
     }
   };
 
-
-
-  weatherdata1 = {
-    name: null,
-    main: {
-      temp: null,
-      pressure:null,
-      humidity:null
-    },
-    sys: {
-      country: ''
-    },
-    weather: [{description: null}],
-    wind:{
-      speed:''
-    }
-  };
   forecast = [];
   constructor(private weatherdataservice: WeatherDataService) {
     this.Math = Math;
@@ -89,25 +75,23 @@ console.log(this.currentDate)
   getCurrentWeatherInfo(lat, lng, type) {
     this.weatherdataservice.getWeatherDataBylatLon(lat, lng, type).subscribe(data => {
         this.currentWeather = data;
+        this.currentWeather.main.temp=this.Math.round( this.currentWeather.main.temp - 273);
+        this.currentWeather.main.temp_min=this.Math.round( this.currentWeather.main.temp_min - 273);
+        this.currentWeather.main.temp_max=this.Math.round( this.currentWeather.main.temp_max - 273);
         console.log('current',this.currentWeather);
       }
     );
   }
 
-
-
-
   getForcastWeatherInfo(lat, lng, type) {
     this.weatherdataservice.getWeatherDataBylatLon(lat, lng, 'forcast').subscribe(data => {
         console.log(data);
-
-
         for (let i = 0; i < data.list.length; i = i + 8) {
         const forecastWeather = data.list[i];
         // console.log(forecastWeather);
         this.forecast.push(forecastWeather);
       }
-        console.log( this.forecast);
+        console.log('5 day', this.forecast);
       }
     );
   }
@@ -121,13 +105,15 @@ console.log(this.currentDate)
     if ($event.weatherType === 'city' ) {
       this.weatherdataservice.getWeatherDataByCity(this.city, null, 'forcast' ).subscribe(data => {
           console.log(data);
-          this.weatherdata1 = data;
+        
+          this.getCurrentLocation( data.city.coord.lat,data.city.coord.lon);
+          this.currentWeather=data;
         }
       );
     } else {
       this.weatherdataservice.getWeatherDataBylatLon(this.lat, this.lng, 'forcast' ).subscribe(data => {
           console.log(data);
-          this.weatherdata1 = data;
+          this.getCurrentLocation(this.lat, this.lng);
 
           for (let i = 0; i < data.list.length; i = i + 8) {
           const forecastWeather = data.list[i];
@@ -138,12 +124,15 @@ console.log(this.currentDate)
         }
       );
     }
-/*https://github.com/FreeCodeCamp-SLC/weather-ng2/blob/master/src/app/forecast/forecast.component.ts*/
-
   }
 
   refreshData(){
     this.lastUpdateAt=new Date().toLocaleString();
     this.getCurrentWeatherInfo(this.lat, this.lng, 'current' );
+  }
+
+  setWeatherDetail(weather){
+    console.log(weather);
+    this.currentWeather=weather;
   }
 }

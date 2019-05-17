@@ -25,10 +25,10 @@
     </ul>
     <form  id="property" class="form-inline my-2 my-md-0">
 
-      <input *ngIf="city" class="form-control" autocorrect="off" autocapitalize="off" spellcheck="off"   name="search"  id="city" (focusout)="emitLocationData($event,'city')" type="text"   placeholder="Search City">
+      <input *ngIf="city" class="form-control" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="off"   name="search"  id="city" (focusout)="emitLocationData($event,'city')" type="text"   placeholder="Search City">
 
-      <input *ngIf="!city" class="form-control" autocorrect="off" autocapitalize="off" spellcheck="off"  #search name="search" id="address" (focusout)="emitLocationData($event,'location')" type="text"   placeholder="Search Location">
-
+      <input *ngIf="!city" class="form-control" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="off"  #search name="search" id="address" (focusout)="emitLocationData($event,'location')" type="text"   placeholder="Search Location">
+      <!-- &nbsp;<button class="btn btn-outline-info my-2 my-sm-0" type="submit" (click)="emitLocationData($event,'city')">Search</button> -->
     </form>
 
   </div>

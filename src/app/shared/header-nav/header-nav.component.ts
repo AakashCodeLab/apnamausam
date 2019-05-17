@@ -28,13 +28,6 @@ requestObj = {
 
 
   ngOnInit() {
-    console.log(this.router.url);
-   
-    /*
-    $(document).ready(function(){
-      // Call Geo Complete
-      $("#address").geocomplete({details:"form#property"});
-    });*/
 
   }
 
@@ -51,26 +44,26 @@ requestObj = {
       this.requestObj.lng = 72.00;
       delete this.requestObj.city;
       this.messageEvent.emit(this.requestObj);
-      this.mapsAPILoader.load().then(
-        () => {
-          /*  const autocomplete = new google.maps.places.Autocomplete(this.searchElement.nativeElement, { types: ['address'] });
+      // this.mapsAPILoader.load().then(
+      //   () => {
+      //      const autocomplete = new google.maps.places.Autocomplete(this.searchElement.nativeElement, { types: ['address'] });
 
-            autocomplete.addListener('place_changed', () => {
-              this.ngZone.run(() => {
-                const place: google.maps.places.PlaceResult = autocomplete.getPlace();
-                 this.requestObj.lat=place.geometry.location.lat();
-                 this.requestObj.lng=place.geometry.location.lng();
-                 this.requestObj.type='current';
-                this.messageEvent.emit(this.requestObj);
-                if (place.geometry === undefined || place.geometry === null ) {
-                  console.log(place.geometry);
-                  return;
-                }
-              });
-            });*/
-        }
+      //       autocomplete.addListener('place_changed', () => {
+      //         this.ngZone.run(() => {
+      //           const place: google.maps.places.PlaceResult = autocomplete.getPlace();
+      //            this.requestObj.lat=place.geometry.location.lat();
+      //            this.requestObj.lng=place.geometry.location.lng();
+      //           //this.requestObj.type='current';
+      //           this.messageEvent.emit(this.requestObj);
+      //           if (place.geometry === undefined || place.geometry === null ) {
+      //             console.log(place.geometry);
+      //             return;
+      //           }
+      //         });
+      //       });
+      //   }
 
-      );
+      // );
     }
 
 

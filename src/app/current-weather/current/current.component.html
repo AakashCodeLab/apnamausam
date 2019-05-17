@@ -1,9 +1,9 @@
 <app-header-nav  (messageEvent)="receiveMessage($event)" ></app-header-nav>
-<div class="container" align=center>
+<div class="container" align=center style="margin-top:6px;background-repeat: no-repeat; background: url(../../../assets/images/spots_background_light_blur_68629_1920x1080.jpg);box-shadow: 9px 7px 40px -6px rgba(0, 0, 0, 0.25);">
 
-  <div class="" style="display: flex;justify-content: center; align-items: center;">
+  <div class="" style="display: flex;justify-content: center; align-items: center;    padding: 120px;">
     <div class="col-md-6 col-xs-8 ">
-      <div class="weather text-center">
+      <div class=" text-center" style="color:#fff">
         <h2 class="temp">{{this.Math.round(weatherdata1.main.temp - 273)}}&deg;</h2>
         <h3><span class="country">{{location}}</span></h3>
        <!-- <img  src="{{mapurl}}" class='img img-responsive center-block'>-->
@@ -12,12 +12,6 @@
           <img height=100px; width=100px src="https://openweathermap.org/img/w/{{weatherdata1.weather[0].icon}}.png" class='img img-responsive center-block'>
         </div>
         <h4 class="weatherDetail">{{weatherdata1.weather["0"].description}}</h4>
-
-
-
-        <div class="toggle" id="c">
-          <button type="button" class="btn btn-danger btn-lg">Toggle temperature</button>
-        </div>
       </div><!--weather-->
     </div>
   </div><!--row-->

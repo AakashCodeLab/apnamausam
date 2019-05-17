@@ -14,7 +14,7 @@ export class WeatherDataService {
   units = 'Metric';
 
   getCurrentLocation(lat, lng): any {
-    const  url = `https://open.mapquestapi.com/geocoding/v1/reverse?key=MAo53uOro51dvDPbucIxtZytlnb3AlD7&location=19.1107744,72.8456284`;
+    const  url = `https://open.mapquestapi.com/geocoding/v1/reverse?key=MAo53uOro51dvDPbucIxtZytlnb3AlD7&location=${lat},${lng}`;
     return this.httpClient.get(url).map((response) => {
       return response;
     });

@@ -19,7 +19,8 @@
       <p><span> <img src="../../../assets/images/Wind%20Speed%2098-102_44px.png"></span>Wind Speed : {{currentWeather.wind.speed}} m/sec</p>
     </div>
     <div style="border: 1px solid #fff;height: 160px;"></div>
-    <div style="display: flex;flex-direction: column;align-items: center;">
+    <div style="display: flex;flex-direction: column;align-items: center;margin-top: -10px; line-height: 10px;">
+      <p style="font-size: 23px;font-weight: 600;">{{this.Math.round(currentWeather.main.temp)}} &deg;C </p>
       <img height=100px; width=100px src="https://openweathermap.org/img/w/{{currentWeather.weather[0].icon}}.png" class='img img-responsive center-block'>
       <p>{{currentWeather.weather["0"].description}}</p>
       <p  (click)="refreshData()">Last update at: {{lastUpdateAt}} <span><i class="fa fa-refresh"></i></span></p>  
@@ -27,10 +28,10 @@
     <div style="border: 1px solid  #fff;height: 160px;"></div>
     <div>
       <p>Min temp</p>
-      <p>{{this.Math.round(currentWeather.main.temp_min - 273)}} &deg;C <span> <img src="../../../assets/images/Thermometer-44.png"></span></p>
+      <p>{{this.Math.round(currentWeather.main.temp_min )}} &deg;C <span> <img src="../../../assets/images/Thermometer-44.png"></span></p>
       <p style="border: 1px solid  #fff"></p>
       <p>Min temp</p>
-      <p>{{this.Math.round(currentWeather.main.temp_max  - 273)}} &deg;C<span> <img src="../../../assets/images/Thermometer-44.png"></span></p>
+      <p>{{this.Math.round(currentWeather.main.temp_max  )}} &deg;C<span> <img src="../../../assets/images/Thermometer-44.png"></span></p>
     </div>
   </div>
 
@@ -38,14 +39,14 @@
 
   <div class="row col-sm-12  d-flex" style="justify-content: space-evenly;padding-bottom: 20px;">
 <div class="">
-  <p>{{this.Math.round(currentWeather.main.temp - 273)}} &deg;C </p>
+  <p>{{this.Math.round(currentWeather.main.temp)}} &deg;C </p>
   <p>{{currentDate}}</p>
 </div>
     <div class="" style="border: 1px solid #fff;height: 70px;"></div>
     <div class="row col-sm-8 d-flex" style="justify-content: space-evenly">
       <div style="    text-align: center;" *ngFor="let weather of forecast" >
         <p>{{weather.dt_txt| date : 'EEEE '}}</p>
-        <img height=100px; width=100px src="https://openweathermap.org/img/w/{{weather.weather[0].icon}}.png" class='img img-responsive center-block'>
+        <img height=100px; width=100px src="https://openweathermap.org/img/w/{{weather.weather[0].icon}}.png" class='img img-responsive center-block' (click)="setWeatherDetail(weather);">
 
         <p>{{weather.main.temp}} &deg;C</p>
         <p>{{weather.weather[0].description}} &deg;C</p>
