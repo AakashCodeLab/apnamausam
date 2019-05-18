@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {WeatherDataService} from '../../services/weather-service.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-current',

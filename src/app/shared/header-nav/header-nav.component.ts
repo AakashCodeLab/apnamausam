@@ -1,9 +1,9 @@
 import { Component, Output, ViewChild, OnInit, EventEmitter, ElementRef, NgZone  } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {WeatherDataService} from '../../services/weather-service.service';
 import { Router } from '@angular/router';
 // import {} from 'googlemaps';
-
-
 declare var $: any;
 
 @Component({
@@ -16,66 +16,50 @@ export class HeaderNavComponent implements OnInit {
   @ViewChild('search') public searchElement: ElementRef;
   @Output() messageEvent = new EventEmitter<any>();
 
-  constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private router: Router) {}
+  constructor(private weatherdataservice: WeatherDataService,private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private router: Router) {}
 requestObj = {
     lat: null,
     lng: null,
-    weatherType: '',
     city: '',
+    address:'',
+    weatherType:'',
     currentTime:new Date().toLocaleTimeString()
 }
 
-
+searchValue = new FormGroup({
+  searchText: new FormControl('', Validators.required),
+ });
 
   ngOnInit() {
 
   }
 
-  emitLocationData(event, type) {
-    if (type === 'city') {
-      this.requestObj.weatherType = 'city';
-      this.requestObj.city = event.target.value;
-      delete this.requestObj.lat;
-      delete this.requestObj.lng;
-      this.messageEvent.emit(this.requestObj);
-    } else {
-      this.requestObj.weatherType = 'latlng';
-      this.requestObj.lat = 19.22;
-      this.requestObj.lng = 72.00;
-      delete this.requestObj.city;
-      this.messageEvent.emit(this.requestObj);
-      // this.mapsAPILoader.load().then(
-      //   () => {
-      //      const autocomplete = new google.maps.places.Autocomplete(this.searchElement.nativeElement, { types: ['address'] });
-
-      //       autocomplete.addListener('place_changed', () => {
-      //         this.ngZone.run(() => {
-      //           const place: google.maps.places.PlaceResult = autocomplete.getPlace();
-      //            this.requestObj.lat=place.geometry.location.lat();
-      //            this.requestObj.lng=place.geometry.location.lng();
-      //           //this.requestObj.type='current';
-      //           this.messageEvent.emit(this.requestObj);
-      //           if (place.geometry === undefined || place.geometry === null ) {
-      //             console.log(place.geometry);
-      //             return;
-      //           }
-      //         });
-      //       });
-      //   }
-
-      // );
-    }
-
-
-
-  }
-
-  type(typeofdata) {
-    console.log(typeofdata);
-    if (typeofdata === 'city') {
-      this.city = true;
-    } else {
-      this.city = false;
+  emitLocationData(){
+    console.log(this.searchValue.value.searchText);
+    let searchText=this.searchValue.value.searchText;
+    var matches = searchText.match(/\d+/g);
+    if (matches != null) {
+      console.log('number');
+        this.weatherdataservice.getLatLngByZip(this.searchValue.value.searchText).subscribe(data => {
+          console.log(data);
+          this.requestObj.lat = data.latt;
+          this.requestObj.lng = data.longt;
+          this.requestObj.address = data.standard.addresst;
+          this.requestObj.city = data.standard.city;
+          this.requestObj.weatherType='latlng';
+          this.messageEvent.emit(this.requestObj);
+           }
+          );
+      
+       }else{
+            this.requestObj.city=searchText;
+            delete this.requestObj.lat;
+            delete this.requestObj.lng;
+            delete this.requestObj.address;
+            this.requestObj.weatherType='city';
+            this.messageEvent.emit(this.requestObj);
+     
     }
   }
+
 }

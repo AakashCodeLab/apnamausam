@@ -13,23 +13,14 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/forcast" routerLinkActive="active" >5 Day forecast</a>
       </li>
-       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Search By
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a (click)="type('city')" class="dropdown-item">Find By City</a>
-          <a (click)="type('location')" class="dropdown-item" >Find By Location</a>
-        </div>
-       </li>
     </ul>
-    <form  id="property" class="form-inline my-2 my-md-0">
+    <form  [formGroup]="searchValue" (ngSubmit)="searchValue.valid && emitLocationData()" id="property" class="form-inline my-2 my-md-0">
 
-      <input *ngIf="city" class="form-control" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="off"   name="search"  id="city" (focusout)="emitLocationData($event,'city')" type="text"   placeholder="Search City">
+      <input formControlName="searchText" class="form-control" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="off"   name="search"  id="city"  type="text"   placeholder="Search City/Zip Code">
 
-      <input *ngIf="!city" class="form-control" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="off"  #search name="search" id="address" (focusout)="emitLocationData($event,'location')" type="text"   placeholder="Search Location">
-      <!-- &nbsp;<button class="btn btn-outline-info my-2 my-sm-0" type="submit" (click)="emitLocationData($event,'city')">Search</button> -->
-    </form>
+      <!-- <input *ngIf="!city" class="form-control" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="off"  #search name="search" id="address" (focusout)="emitLocationData($event,'location')" type="text"   placeholder="Search Location"> -->
+   &nbsp;<button style="color:#fff" class="btn btn-outline-info my-2 my-sm-0" [disabled]="!searchValue.valid" type="submit" >Find Weather</button>
+  </form>
 
   </div>
 </nav>

@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {AgmCoreModule} from '@agm/core';
 import {FormsModule} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
@@ -17,6 +18,7 @@ import { environment } from '../environments/environment';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     AgmCoreModule.forRoot({
      // apiKey: 'AIzaSyDeoGwJDBE4ic-btiuWCfLk37ehqk2LxPs',
       libraries: ['places']
