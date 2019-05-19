@@ -4,7 +4,7 @@ import {HeaderNavComponent} from './header-nav/header-nav.component';
 import {FormsModule} from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import {RouterModule} from '@angular/router';
-
+import { NgxSpinnerModule } from 'ngx-spinner';
 @NgModule({
   declarations: [HeaderNavComponent],
   imports: [
@@ -12,6 +12,7 @@ import {RouterModule} from '@angular/router';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
+    NgxSpinnerModule
   ],
   exports: [HeaderNavComponent]
 })

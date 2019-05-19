@@ -1,7 +1,7 @@
  import { Component, OnInit } from '@angular/core';
 import {WeatherDataService} from '../../services/weather-service.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-forcast',
   templateUrl: './forcast.component.html',
@@ -39,11 +39,12 @@ export class ForcastComponent implements OnInit {
   };
 
   forecast = [];
-  constructor(private weatherdataservice: WeatherDataService) {
+  constructor(private weatherdataservice: WeatherDataService,private spinner: NgxSpinnerService) {
     this.Math = Math;
   }
 
   ngOnInit() {
+    this.spinner.show();
     this.lastUpdateAt=new Date().toLocaleString();
     setInterval(() => {      
       this.currentTimestamp=new Date().toLocaleTimeString();
@@ -87,6 +88,7 @@ export class ForcastComponent implements OnInit {
   }
 
   getWeatherInfo(lat, lng, type, location) {
+    this.spinner.show();
     this.location = location;
     if(type=='current')
     {
@@ -98,10 +100,12 @@ export class ForcastComponent implements OnInit {
         this.currentWeather.main.pressure= this.currentWeather.main.temp_max *0.0295301 ;
 
         console.log('current',this.currentWeather);
+        this.spinner.hide();
       }
     );
     }else
     {
+      this.spinner.show();
       this.weatherdataservice.getWeatherDataBylatLon(lat, lng, type).subscribe(data => {
         console.log(data);
         this.forecast = [];
@@ -111,7 +115,9 @@ export class ForcastComponent implements OnInit {
         this.forecast.push(forecastWeather);
       }
         console.log('5 day', this.forecast);
+        this.spinner.hide();
       }
+      
     );
     }
    
@@ -120,6 +126,7 @@ export class ForcastComponent implements OnInit {
 
 
   receiveMessage($event) {
+    this.spinner.show();
     console.log('from forcast', $event);
     this.lat = $event.lat;
     this.lng = $event.lng;
@@ -130,6 +137,7 @@ export class ForcastComponent implements OnInit {
         
           this.getCurrentLocationAddress( data.city.coord.lat,data.city.coord.lon);
           this.currentWeather=data;
+          this.spinner.hide();
         }
       );
     } else {
@@ -138,12 +146,17 @@ export class ForcastComponent implements OnInit {
   }
 
   refreshData(){
+    this.spinner.show();
     this.lastUpdateAt=new Date().toLocaleString();
     this.getWeatherInfo(this.lat, this.lng, 'current',this.location );
   }
 
   setWeatherDetail(weather){
+    this.spinner.show();
     console.log(weather);
     this.currentWeather=weather;
+   setTimeout(() => {
+    this.spinner.hide();
+   }, 500);
   }
 }

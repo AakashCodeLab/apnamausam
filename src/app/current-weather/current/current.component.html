@@ -1,4 +1,11 @@
 <app-header-nav  (messageEvent)="receiveMessage($event)" ></app-header-nav>
+<ngx-spinner
+bdColor="rgba(51,51,51,0.8)"
+size="medium"
+color="#fff"
+type="ball-scale-multiple">
+<p style="font-size: 20px; color: white;position: relative; top:40px;">Getting weather data...</p>
+></ngx-spinner>
 <div class="container" align=center style="margin-top:6px;background-repeat: no-repeat; background: url(../../../assets/images/spots_background_light_blur_68629_1920x1080.jpg);box-shadow: 9px 7px 40px -6px rgba(0, 0, 0, 0.25);">
 
   <div class="" style="display: flex;justify-content: center; align-items: center;    padding: 120px;">

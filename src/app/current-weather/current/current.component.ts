@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {WeatherDataService} from '../../services/weather-service.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-current',
   templateUrl: './current.component.html',
@@ -36,7 +36,7 @@ export class CurrentComponent implements OnInit {
     }
   };
 
-  constructor(private weatherdataservice: WeatherDataService) {
+  constructor(private weatherdataservice: WeatherDataService,private spinner: NgxSpinnerService) {
     this.Math = Math;
   }
 
@@ -45,13 +45,14 @@ export class CurrentComponent implements OnInit {
     this.getCurrentLocation();
   }
   getCurrentLocation() {
+    this.spinner.show();
     this.weatherdataservice.getCurrentLocation().subscribe(data => {
         console.log(data);
         if(data.lat && data.lon!=null){
         this.location=this.getCurrentLocationAddress(data.lat,data.lon);
         this.getWeatherInfo(data.lat, data.lon, 'current', this.location );
         }
-      
+        
       },error=>{
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(position => {
@@ -75,6 +76,7 @@ export class CurrentComponent implements OnInit {
         this.currentWeather.main.temp_min=this.Math.round( this.currentWeather.main.temp_min - 273);
         this.currentWeather.main.temp_max=this.Math.round( this.currentWeather.main.temp_max - 273);
         console.log('current',this.currentWeather);
+        this.spinner.hide();
       }
     );
     }

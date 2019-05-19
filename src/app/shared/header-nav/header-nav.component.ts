@@ -3,6 +3,7 @@ import { MapsAPILoader } from '@agm/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {WeatherDataService} from '../../services/weather-service.service';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 // import {} from 'googlemaps';
 declare var $: any;
 
@@ -16,7 +17,7 @@ export class HeaderNavComponent implements OnInit {
   @ViewChild('search') public searchElement: ElementRef;
   @Output() messageEvent = new EventEmitter<any>();
 
-  constructor(private weatherdataservice: WeatherDataService,private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private router: Router) {}
+  constructor(private spinner: NgxSpinnerService,private weatherdataservice: WeatherDataService,private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private router: Router) {}
 requestObj = {
     lat: null,
     lng: null,
@@ -35,6 +36,7 @@ searchValue = new FormGroup({
   }
 
   emitLocationData(){
+    this.spinner.show();
     console.log(this.searchValue.value.searchText);
     let searchText=this.searchValue.value.searchText;
     var matches = searchText.match(/\d+/g);
