@@ -61,7 +61,18 @@ export class ForcastComponent implements OnInit {
         this.getWeatherInfo(this.lat, this.lng, 'forcast', this.location );
         }
       
+      },error=>{
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(position => {
+            this.lat = position.coords.latitude;
+            this.lng = position.coords.longitude;
+            this.location=this.getCurrentLocationAddress(this.lat,this.lng);
+            this.getWeatherInfo(this.lat, this.lng, 'current', this.location );
+            this.getWeatherInfo(this.lat, this.lng, 'forcast', this.location );
+
+          });
       }
+    }
     );
   }
 
