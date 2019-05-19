@@ -26,7 +26,7 @@ export class ForcastComponent implements OnInit {
       temp: null,
       temp_min:null,
       temp_max:null ,
-      pressure:'',
+      pressure:null,
       humidity:null
     },
     sys: {
@@ -34,7 +34,7 @@ export class ForcastComponent implements OnInit {
     },
     weather: [{description: null,id:null,icon:null}],
     wind:{
-      speed:''
+      speed:null
     }
   };
 
@@ -84,6 +84,8 @@ export class ForcastComponent implements OnInit {
         this.currentWeather.main.temp=this.Math.round( this.currentWeather.main.temp - 273);
         this.currentWeather.main.temp_min=this.Math.round( this.currentWeather.main.temp_min - 273);
         this.currentWeather.main.temp_max=this.Math.round( this.currentWeather.main.temp_max - 273);
+        this.currentWeather.main.pressure= this.currentWeather.main.temp_max *0.0295301 ;
+
         console.log('current',this.currentWeather);
       }
     );
