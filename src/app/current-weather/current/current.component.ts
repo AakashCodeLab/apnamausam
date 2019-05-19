@@ -49,10 +49,19 @@ export class CurrentComponent implements OnInit {
         console.log(data);
         if(data.lat && data.lon!=null){
         this.location=this.getCurrentLocationAddress(data.lat,data.lon);
-        this.getWeatherInfo(this.lat, this.lng, 'current', this.location );
+        this.getWeatherInfo(data.lat, data.lon, 'current', this.location );
         }
       
+      },error=>{
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(position => {
+            this.lat = position.coords.latitude;
+            this.lng = position.coords.longitude;
+            this.location=this.getCurrentLocationAddress(this.lat,this.lng);
+            this.getWeatherInfo(this.lat, this.lng, 'current', this.location );
+          });
       }
+      
     );
   }
   getWeatherInfo(lat, lng, type, location) {
