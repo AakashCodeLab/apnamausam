@@ -19,7 +19,7 @@ export class WeatherDataService {
  
 
   getCurrentLocation(): Observable <any> {
-    const  url = `http://ip-api.com/json`;
+    const  url = `https://ip-api.com/json`;
     return this.httpClient.get(url).map((response) => {
       return response;
     });
