@@ -10,24 +10,35 @@ export class WeatherDataService {
 
   constructor( private httpClient: HttpClient) { }
   weatherApiKey = '1ffd2cc61ace95f73895ce1b6b273190';
+  currentLocationApiKey='MAo53uOro51dvDPbucIxtZytlnb3AlD7';
+  zipCodeAutKey='711222908045781164814x2370';
   weatherBaseUrl = 'https://api.openweathermap.org/data/2.5/';
+  currentLocationBaseUrl = 'https://open.mapquestapi.com/geocoding/v1/reverse';
   units = 'Metric';
 
-  getLatLngByZip(zipcode): Observable <any> {
-  const  url = `https://geocode.xyz/${zipcode}?geoit=json&auth=711222908045781164814x2370`;
-  return this.httpClient.get(url).map((response) => {
-    return response;
-  });
-  }
+ 
 
+  getCurrentLocation(): Observable <any> {
+    const  url = `http://ip-api.com/json`;
+    return this.httpClient.get(url).map((response) => {
+      return response;
+    });
+    }
 
-
-  getCurrentLocation(lat, lng): Observable <any>{
-    const  url = `https://open.mapquestapi.com/geocoding/v1/reverse?key=MAo53uOro51dvDPbucIxtZytlnb3AlD7&location=${lat},${lng}`;
+  getCurrentLocationAddress(lat, lng): Observable <any>{
+    const  url = `${this.currentLocationBaseUrl}?key=${this.currentLocationApiKey}&location=${lat},${lng}`;
     return this.httpClient.get(url).map((response) => {
       return response;
     });
   }
+
+  getLatLngByZip(zipcode): Observable <any> {
+    const  url = `https://geocode.xyz/${zipcode}?geoit=json&auth=${this.zipCodeAutKey}`;
+    return this.httpClient.get(url).map((response) => {
+      return response;
+    });
+    }
+  
 
   getWeatherDataBylatLon(lat: any, lng: any, type: any): Observable <any> {
     let  url = '';

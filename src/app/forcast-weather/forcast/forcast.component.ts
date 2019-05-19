@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+ import { Component, OnInit } from '@angular/core';
 import {WeatherDataService} from '../../services/weather-service.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -15,7 +15,7 @@ export class ForcastComponent implements OnInit {
   currentDate;
   lastUpdateAt;
   city = 'mumbai';
-  location='Mumbai, Maharashtra,In';
+  location:any;
   Math: any;
   currentWeather = {
     coord:{
@@ -49,31 +49,37 @@ export class ForcastComponent implements OnInit {
       this.currentTimestamp=new Date().toLocaleTimeString();
     }, 1000);
     this.currentDate=new Date().toDateString();
-    this.getCurrentWeatherInfo(this.lat, this.lng, 'current' );
-    this.getForcastWeatherInfo(this.lat, this.lng, 'forcast' );
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(position => {
-        this.lat = position.coords.latitude;
-        this.lng = position.coords.longitude;
-        this.getCurrentLocation( this.lat, this.lng );
-      });
-    } else {
-      this.getCurrentWeatherInfo(this.lat, this.lng, 'current' );
-      this.getForcastWeatherInfo(this.lat, this.lng, 'forcast' );
-    }
+    this.getCurrentLocation();
   }
-  getCurrentLocation(lat, lng) {
-    this.weatherdataservice.getCurrentLocation(lat, lng).subscribe(data => {
+
+  getCurrentLocation() {
+    this.weatherdataservice.getCurrentLocation().subscribe(data => {
         console.log(data);
-        this.location = data.results[0].locations[0].street+', '+data.results[0].locations[0].adminArea3+','+data.results[0].locations[0].adminArea1;
-        this.getCurrentWeatherInfo(this.lat, this.lng, 'current' );
-        this.getForcastWeatherInfo(this.lat, this.lng, 'forcast' );
+        if(data.lat && data.lon!=null){
+        this.location=this.getCurrentLocationAddress(data.lat,data.lon);
+        this.getWeatherInfo(this.lat, this.lng, 'current', this.location );
+        this.getWeatherInfo(this.lat, this.lng, 'forcast', this.location );
+        }
+      
       }
     );
   }
 
-  getCurrentWeatherInfo(lat, lng, type) {
-    this.weatherdataservice.getWeatherDataBylatLon(lat, lng, type).subscribe(data => {
+
+  getCurrentLocationAddress(lat, lng) {
+    return this.weatherdataservice.getCurrentLocationAddress(lat, lng).subscribe(data => {
+        console.log(data);
+        return this.location = data.results[0].locations[0].street+', '+data.results[0].locations[0].adminArea3+','+data.results[0].locations[0].adminArea1;
+       
+      }
+    );
+  }
+
+  getWeatherInfo(lat, lng, type, location) {
+    this.location = location;
+    if(type=='current')
+    {
+        this.weatherdataservice.getWeatherDataBylatLon(lat, lng, type).subscribe(data => {
         this.currentWeather = data;
         this.currentWeather.main.temp=this.Math.round( this.currentWeather.main.temp - 273);
         this.currentWeather.main.temp_min=this.Math.round( this.currentWeather.main.temp_min - 273);
@@ -81,22 +87,23 @@ export class ForcastComponent implements OnInit {
         console.log('current',this.currentWeather);
       }
     );
-  }
-
-  getForcastWeatherInfo(lat, lng, type) {
-   
-    this.weatherdataservice.getWeatherDataBylatLon(lat, lng, 'forcast').subscribe(data => {
+    }else
+    {
+      this.weatherdataservice.getWeatherDataBylatLon(lat, lng, type).subscribe(data => {
         console.log(data);
         this.forecast = [];
         for (let i = 0; i < data.list.length; i = i + 8) {
         const forecastWeather = data.list[i];
-        // console.log(forecastWeather);
+        console.log(forecastWeather);
         this.forecast.push(forecastWeather);
       }
         console.log('5 day', this.forecast);
       }
     );
+    }
+   
   }
+
 
 
   receiveMessage($event) {
@@ -108,29 +115,18 @@ export class ForcastComponent implements OnInit {
       this.weatherdataservice.getWeatherDataByCity(this.city, null, 'forcast' ).subscribe(data => {
           console.log(data);
         
-          this.getCurrentLocation( data.city.coord.lat,data.city.coord.lon);
+          this.getCurrentLocationAddress( data.city.coord.lat,data.city.coord.lon);
           this.currentWeather=data;
         }
       );
     } else {
-      this.forecast = [];
-      this.weatherdataservice.getWeatherDataBylatLon(this.lat, this.lng, 'forcast' ).subscribe(data => {
-          console.log(data);
-          this.location=$event.address;
-          console.log(this.location)
-          for (let i = 0; i < data.list.length; i = i + 8) {
-          const forecastWeather = data.list[i];
-          this.forecast.push(forecastWeather);
-        }
-          console.log( this.forecast);
-        }
-      );
+      this.getWeatherInfo(this.lat, this.lng, 'forcast', $event.address );
     }
   }
 
   refreshData(){
     this.lastUpdateAt=new Date().toLocaleString();
-    this.getCurrentWeatherInfo(this.lat, this.lng, 'current' );
+    this.getWeatherInfo(this.lat, this.lng, 'current',this.location );
   }
 
   setWeatherDetail(weather){

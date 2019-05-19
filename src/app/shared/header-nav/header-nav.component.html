@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+<nav class="navbar navbar-expand-sm navbar-dark bg-primary">
   <a class="navbar-brand" href="#">WeatherApp</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -7,7 +7,7 @@
 
   <div class="collapse navbar-collapse" id="navbarsExample03">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item ">
         <a class="nav-link"  routerLink="/current"   routerLinkActive="active">
           Current weather</a>          </li>
       <li class="nav-item">
@@ -19,7 +19,7 @@
       <input formControlName="searchText" class="form-control" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="off"   name="search"  id="city"  type="text"   placeholder="Search City/Zip Code">
 
       <!-- <input *ngIf="!city" class="form-control" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="off"  #search name="search" id="address" (focusout)="emitLocationData($event,'location')" type="text"   placeholder="Search Location"> -->
-   &nbsp;<button style="color:#fff" class="btn btn-outline-info my-2 my-sm-0" [disabled]="!searchValue.valid" type="submit" >Find Weather</button>
+   &nbsp;<button style="color:#fff;border: 1px solid #fcf0f0;" class="btn btn-outline-info my-2 my-sm-0" [disabled]="!searchValue.valid" type="submit" >Find Weather</button>
   </form>
 
   </div>

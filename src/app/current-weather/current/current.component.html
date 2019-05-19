@@ -4,14 +4,14 @@
   <div class="" style="display: flex;justify-content: center; align-items: center;    padding: 120px;">
     <div class="col-md-6 col-xs-8 ">
       <div class=" text-center" style="color:#fff">
-        <h2 class="temp">{{this.Math.round(weatherdata1.main.temp - 273)}}&deg;</h2>
+        <h2 class="temp">{{this.currentWeather.main.temp}}&deg;</h2>
         <h3><span class="country">{{location}}</span></h3>
        <!-- <img  src="{{mapurl}}" class='img img-responsive center-block'>-->
 
         <div class="iconpic">
-          <img height=100px; width=100px src="https://openweathermap.org/img/w/{{weatherdata1.weather[0].icon}}.png" class='img img-responsive center-block'>
+          <img height=100px; width=100px src="https://openweathermap.org/img/w/{{currentWeather.weather[0].icon}}.png" class='img img-responsive center-block'>
         </div>
-        <h4 class="weatherDetail">{{weatherdata1.weather["0"].description}}</h4>
+        <h4 class="weatherDetail">{{currentWeather.weather["0"].description}}</h4>
       </div><!--weather-->
     </div>
   </div><!--row-->
