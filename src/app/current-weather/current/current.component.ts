@@ -61,6 +61,7 @@ export class CurrentComponent implements OnInit {
             this.getWeatherInfo(this.lat, this.lng, 'current', this.location );
           });
       }
+    }
       
     );
   }
