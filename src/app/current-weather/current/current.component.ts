@@ -101,7 +101,7 @@ export class CurrentComponent implements OnInit {
       this.weatherdataservice.getWeatherDataByCity(this.city, null, 'current' ).subscribe(data => {
           console.log(data);
         
-          this.getCurrentLocationAddress( data.city.coord.lat,data.city.coord.lon);
+          this.getCurrentLocationAddress( data.coord.lat,data.coord.lon);
           this.currentWeather=data;
         }
       );
