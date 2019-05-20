@@ -6,13 +6,15 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  constructor(private spinner: NgxSpinnerService) { }
+  constructor(private spinner: NgxSpinnerService) {
+
+   }
   title = 'weather-app';
   ngOnInit() {
     /** spinner starts on init */
     this.spinner.show();
-    if (navigator) {
-      navigator.geolocation.getCurrentPosition(position => {
+    if (window.navigator) {
+      window.navigator.geolocation.getCurrentPosition(position => {
   
       });
   }

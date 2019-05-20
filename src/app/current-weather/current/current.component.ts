@@ -58,8 +58,8 @@ export class CurrentComponent implements OnInit {
         }
         
       },error=>{
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(position => {
+        if (window.navigator.geolocation) {
+          window.navigator.geolocation.getCurrentPosition(position => {
             this.lat = position.coords.latitude;
             this.lng = position.coords.longitude;
             this.location=this.getCurrentLocationAddress(this.lat,this.lng);
