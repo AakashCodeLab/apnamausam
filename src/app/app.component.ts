@@ -7,17 +7,14 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class AppComponent implements OnInit{
   constructor(private spinner: NgxSpinnerService) {
-
-   }
-  title = 'weather-app';
-  ngOnInit() {
-    /** spinner starts on init */
-    this.spinner.show();
     if (window.navigator) {
       window.navigator.geolocation.getCurrentPosition(position => {
   
       });
-  }
+    }
+   }
+  title = 'weather-app';
+  ngOnInit() {
   }
 }
 

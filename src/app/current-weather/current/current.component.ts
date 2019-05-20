@@ -100,6 +100,7 @@ export class CurrentComponent implements OnInit {
 
 
   receiveMessage($event) {
+    this.spinner.show();
     console.log('from current', $event);
     this.lat = $event.lat;
     this.lng = $event.lng;
@@ -107,7 +108,7 @@ export class CurrentComponent implements OnInit {
     if ($event.weatherType === 'city' ) {
       this.weatherdataservice.getWeatherDataByCity(this.city, null, 'current' ).subscribe(data => {
           console.log(data);
-        
+          this.spinner.hide();
           this.getCurrentLocationAddress( data.coord.lat,data.coord.lon);
           this.currentWeather=data;
         }
