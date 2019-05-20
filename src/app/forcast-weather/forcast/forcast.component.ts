@@ -97,7 +97,7 @@ export class ForcastComponent implements OnInit {
         this.currentWeather.main.temp=this.Math.round( this.currentWeather.main.temp - 273);
         this.currentWeather.main.temp_min=this.Math.round( this.currentWeather.main.temp_min - 273);
         this.currentWeather.main.temp_max=this.Math.round( this.currentWeather.main.temp_max - 273);
-        this.currentWeather.main.pressure= this.currentWeather.main.temp_max *0.0295301 ;
+        this.currentWeather.main.pressure= this.currentWeather.main.pressure *0.0295301 ;
 
         console.log('current',this.currentWeather);
         this.spinner.hide();
@@ -132,16 +132,37 @@ export class ForcastComponent implements OnInit {
     this.lng = $event.lng;
     this.city = $event.city;
     if ($event.weatherType === 'city' ) {
+      this.weatherdataservice.getWeatherDataByCity(this.city, null, 'current' ).subscribe(data => {
+        this.currentWeather = data;
+        this.currentWeather.main.temp=this.Math.round( this.currentWeather.main.temp - 273);
+        this.currentWeather.main.temp_min=this.Math.round( this.currentWeather.main.temp_min - 273);
+        this.currentWeather.main.temp_max=this.Math.round( this.currentWeather.main.temp_max - 273);
+        this.currentWeather.main.pressure= this.currentWeather.main.pressure *0.0295301 ;
+      });
+
+
       this.weatherdataservice.getWeatherDataByCity(this.city, null, 'forcast' ).subscribe(data => {
           console.log(data);
-        
+          this.forecast = [];
+        for (let i = 0; i < data.list.length; i = i + 8) {
+        const forecastWeather = data.list[i];
+       forecastWeather.main.temp=this.Math.round( forecastWeather.main.temp - 273);
+        forecastWeather.main.temp_min=this.Math.round( forecastWeather.main.temp_min - 273);
+        forecastWeather.main.temp_max=this.Math.round( forecastWeather.main.temp_max - 273);
+        forecastWeather.main.pressure=forecastWeather.main.temp_max *0.0295301 ;
+
+        console.log(forecastWeather);
+        this.forecast.push(forecastWeather);
+      }
           this.getCurrentLocationAddress( data.city.coord.lat,data.city.coord.lon);
-          this.currentWeather=data;
+         // this.currentWeather=data;
+
           this.spinner.hide();
         }
       );
     } else {
       this.getWeatherInfo(this.lat, this.lng, 'forcast', $event.address );
+      this.getWeatherInfo(this.lat, this.lng, 'current', $event.address );
     }
   }
 
