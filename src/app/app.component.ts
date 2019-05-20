@@ -11,7 +11,7 @@ export class AppComponent implements OnInit{
   ngOnInit() {
     /** spinner starts on init */
     this.spinner.show();
-    if (navigator.geolocation) {
+    if (navigator) {
       navigator.geolocation.getCurrentPosition(position => {
   
       });
