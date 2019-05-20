@@ -15,6 +15,7 @@ export class CurrentComponent implements OnInit {
   Math: any;
   location;
   mapurl;
+  currentDate;
   currentWeather = {
     coord:{
       lon:null,
@@ -41,7 +42,10 @@ export class CurrentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.currentTimestamp=new Date().toLocaleTimeString();
+    setInterval(() => {      
+      this.currentTimestamp=new Date().toLocaleTimeString();
+    }, 1000);
+    this.currentDate=new Date().toDateString();
     this.getCurrentLocation();
   }
   getCurrentLocation() {
@@ -67,6 +71,7 @@ export class CurrentComponent implements OnInit {
     );
   }
   getWeatherInfo(lat, lng, type, location) {
+    this.spinner.show();
     this.location = location;
     if(type=='current')
     {
@@ -111,8 +116,5 @@ export class CurrentComponent implements OnInit {
       this.getWeatherInfo(this.lat, this.lng, 'current', $event.address );
     }
   }
-
-
-
 
 }

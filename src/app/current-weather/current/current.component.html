@@ -6,23 +6,245 @@ color="#fff"
 type="ball-scale-multiple">
 <p style="font-size: 20px; color: white;position: relative; top:40px;">Getting weather data...</p>
 ></ngx-spinner>
-<div class="container" align=center style="margin-top:6px;background-repeat: no-repeat; background: url(../../../assets/images/spots_background_light_blur_68629_1920x1080.jpg);box-shadow: 9px 7px 40px -6px rgba(0, 0, 0, 0.25);">
 
-  <div class="" style="display: flex;justify-content: center; align-items: center;    padding: 120px;">
-    <div class="col-md-6 col-xs-8 ">
-      <div class=" text-center" style="color:#fff">
-        <h2 class="temp">{{this.currentWeather.main.temp}}&deg;</h2>
-        <h3><span class="country">{{location}}</span></h3>
-       <!-- <img  src="{{mapurl}}" class='img img-responsive center-block'>-->
 
-        <div class="iconpic">
-          <img height=100px; width=100px src="https://openweathermap.org/img/w/{{currentWeather.weather[0].icon}}.png" class='img img-responsive center-block'>
+
+<div class="main">
+  <h1>Weather </h1>
+  <!---728x90--->
+
+  <div class="main-wthree-row">
+    <div class="agileits-top">
+      <div class="agileinfo-top-row">
+        <div class="agileinfo-top-img">
+          <span> </span>
         </div>
-        <h4 class="weatherDetail">{{currentWeather.weather["0"].description}}</h4>
-      </div><!--weather-->
+        <h3>{{currentWeather.main.temp}}<sup class="degree">°</sup><span>C</span></h3>
+        <p style="max-width: 420px;">{{location }}</p>
+        <div class="agileinfo-top-time"> 
+          <div class="date-time">
+            <div class="dmy">
+              <div id="txt">{{currentTimestamp}}</div>
+              <div class="date">
+                <!-- Date-JavaScript -->
+                <script type="text/javascript">
+                var mydate=new Date()
+                var year=mydate.getYear()
+                if(year<1000)
+                year+=1900
+                var day=mydate.getDay()
+                var month=mydate.getMonth()
+                var daym=mydate.getDate()
+                if(daym<10)
+                daym="0"+daym
+                var dayarray=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday")
+                var montharray=new Array("January","February","March","April","May","June","July","August","September","October","November","December")
+                document.write(""+dayarray[day]+", "+montharray[month]+" "+daym+", "+year+"")
+                </script>
+               {{currentDate}}
+                <!-- //Date-JavaScript -->
+              </div>
+            </div> 
+            <div class="clear"></div>
+          </div>  
+        </div>
+      </div>
     </div>
-  </div><!--row-->
-  <br/>
+    <div class="w3ls-bottom">
+      <h2>Today's Weather </h2>
+      <div id="owl-demo" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
+        <div class="owl-wrapper-outer"><div class="owl-wrapper" style="width: 1690px; left: 0px; display: block; transition: all 800ms ease 0s; transform: translate3d(-390px, 0px, 0px);">
+          <div class="owl-item" style="width: 65px;">
+            <div class="item">
+          <div class="biseller-column">
+            <p>10AM</p>
+            <a class="lightbox" href="#">
+              <img src="https://p.w3layouts.com/demos/aug-2016/11-08-2016/regular_weather_report/web/images/1.png" alt="">
+            </a> 
+            <p>20<sup class="degree">°</sup></p>
+          </div>
+            </div>
+         </div>
+        <div class="owl-item" style="width: 65px;"><div class="item">
+          <div class="biseller-column">
+            <p>11AM</p>
+            <a class="lightbox" href="#">
+              <img src="https://p.w3layouts.com/demos/aug-2016/11-08-2016/regular_weather_report/web/images/1.png" alt="">
+            </a> 
+            <p>22<sup class="degree">°</sup></p>
+          </div>
+        </div>
+       </div>
+        <div class="owl-item" style="width: 65px;"><div class="item">
+          <div class="biseller-column">
+            <p>12PM</p>
+            <a class="lightbox" href="#">
+              <img src="https://p.w3layouts.com/demos/aug-2016/11-08-2016/regular_weather_report/web/images/2.png" alt="">
+            </a> 
+            <p>22<sup class="degree">°</sup></p>
+          </div>
+        </div></div>
+        <div class="owl-item" style="width: 65px;"><div class="item">
+          <div class="biseller-column">
+            <p>1PM</p>
+            <a class="lightbox" href="#">
+              <img src="https://p.w3layouts.com/demos/aug-2016/11-08-2016/regular_weather_report/web/images/1.png" alt="">
+            </a> 
+            <p>24<sup class="degree">°</sup></p>
+          </div>
+        </div></div>
+        <div class="owl-item" style="width: 65px;"><div class="item">
+          <div class="biseller-column">
+            <p>2PM</p>
+            <a class="lightbox" href="#">
+              <img src="https://p.w3layouts.com/demos/aug-2016/11-08-2016/regular_weather_report/web/images/2.png" alt="">
+            </a> 
+            <p>23<sup class="degree">°</sup></p>
+          </div>
+        </div></div>
+        <div class="owl-item" style="width: 65px;"><div class="item">
+          <div class="biseller-column">
+            <p> 3PM</p>
+            <a class="lightbox" href="#">
+              <img src="https://p.w3layouts.com/demos/aug-2016/11-08-2016/regular_weather_report/web/images/4.png" alt="">
+            </a> 
+            <p>22<sup class="degree">°</sup></p>
+          </div>
+        </div></div>
+        <div class="owl-item" style="width: 65px;"><div class="item">
+          <div class="biseller-column">
+            <p>4PM</p>
+            <a class="lightbox" href="#">
+              <img src="https://p.w3layouts.com/demos/aug-2016/11-08-2016/regular_weather_report/web/images/2.png" alt="">
+            </a> 
+            <p>20<sup class="degree">°</sup></p>
+          </div>
+        </div></div>
+        <div class="owl-item" style="width: 65px;"><div class="item">
+          <div class="biseller-column">
+            <p>5PM</p>
+            <a class="lightbox" href="#">
+              <img src="https://p.w3layouts.com/demos/aug-2016/11-08-2016/regular_weather_report/web/images/2.png" alt="">
+            </a> 
+            <p>20<sup class="degree">°</sup></p>
+          </div>
+        </div></div>
+        <div class="owl-item" style="width: 65px;"><div class="item">
+          <div class="biseller-column">
+            <p>6PM</p>
+            <a class="lightbox" href="#">
+              <img src="https://p.w3layouts.com/demos/aug-2016/11-08-2016/regular_weather_report/web/images/1.png" alt="">
+            </a> 
+            <p>20<sup class="degree">°</sup></p>
+          </div>
+        </div></div>
+        <div class="owl-item" style="width: 65px;"><div class="item">
+          <div class="biseller-column">
+            <p>7PM</p>
+            <a class="lightbox" href="#">
+              <img src="https://p.w3layouts.com/demos/aug-2016/11-08-2016/regular_weather_report/web/images/1.png" alt="">
+            </a> 
+            <p>20<sup class="degree">°</sup></p>
+          </div>
+        </div></div>
+        <div class="owl-item" style="width: 65px;"><div class="item">
+          <div class="biseller-column">
+            <p>8PM</p>
+            <a class="lightbox" href="#">
+              <img src="https://p.w3layouts.com/demos/aug-2016/11-08-2016/regular_weather_report/web/images/1.png" alt="">
+            </a> 
+            <p>20<sup class="degree">°</sup></p>
+          </div>
+        </div></div>
+        <div class="owl-item" style="width: 65px;"><div class="item">
+          <div class="biseller-column">
+            <p>9PM</p>
+            <a class="lightbox" href="#">
+              <img src="https://p.w3layouts.com/demos/aug-2016/11-08-2016/regular_weather_report/web/images/1.png" alt="">
+            </a> 
+            <p>20<sup class="degree">°</sup></p>
+          </div>
+        </div></div>
+        <div class="owl-item" style="width: 65px;"><div class="item">
+          <div class="biseller-column">
+            <p>10PM</p>
+            <a class="lightbox" href="#">
+              <img src="https://p.w3layouts.com/demos/aug-2016/11-08-2016/regular_weather_report/web/images/1.png" alt="">
+            </a> 
+            <p>20<sup class="degree">°</sup></p>
+          </div>
+        </div></div>
+      </div>
+    </div> 
+        
+      <div class="owl-controls clickable">
+        <div class="owl-pagination"><div class="owl-page"><span class=""></span></div><div class="owl-page active"><span class=""></span></div><div class="owl-page"><span class=""></span></div></div></div></div>  
+    </div>
+    <div class="w3ls-bottom2">	 
+      <div class="ac-container">
+        <input id="ac-1" name="accordion-1" type="checkbox">
+        <label for="ac-1" class="grid1"> Week</label>
+        <article class="ac-small">
+          <div class="wthree-grids">
+            <div class="wthree-grids-row">
+              <ul class="top">
+                <li>Monday </li>
+                <li class="wthree-img"><img src="images/2.png" alt=""> </li>
+                <li class="wthree-temp"> 25 <sup class="degree">°</sup></li>
+                <li class="wthree-temp"> 20 <sup class="degree">°</sup></li> 
+              </ul> 
+              <div class="clear"> </div>
+            </div>
+            <div class="wthree-grids-row">
+              <ul>
+                <li>Tuesday</li>
+                <li class="wthree-img"><img src="images/4.png" alt=""> </li>
+                <li class="wthree-temp"> 27 <sup class="degree">°</sup></li>
+                <li class="wthree-temp"> 18 <sup class="degree">°</sup></li> 
+              </ul>
+              <div class="clear"> </div>
+            </div>
+            <div class="wthree-grids-row">
+              <ul>
+                <li>Wednesday</li>
+                <li class="wthree-img"><img src="images/3.png" alt=""> </li>
+                <li class="wthree-temp"> 30 <sup class="degree">°</sup></li>
+                <li class="wthree-temp"> 20 <sup class="degree">°</sup></li> 
+              </ul> 
+              <div class="clear"> </div>
+            </div>
+            <div class="wthree-grids-row">
+              <ul>
+                <li>Thursday </li>
+                <li class="wthree-img"><img src="images/3.png" alt=""> </li>
+                <li class="wthree-temp"> 30 <sup class="degree">°</sup></li>
+                <li class="wthree-temp"> 18 <sup class="degree">°</sup></li> 
+              </ul>
+              <div class="clear"> </div>
+            </div>
+            <div class="wthree-grids-row">
+              <ul>
+                <li>Friday</li>
+                <li class="wthree-img"><img src="images/4.png" alt=""> </li>
+                <li class="wthree-temp"> 31 <sup class="degree">°</sup></li>
+                <li class="wthree-temp"> 19 <sup class="degree">°</sup></li> 
+              </ul> 
+              <div class="clear"> </div>
+            </div>
+            <div class="wthree-grids-row">
+              <ul>
+                <li>Saturday </li>
+                <li class="wthree-img"><img src="images/2.png" alt=""> </li>
+                <li class="wthree-temp"> 30 <sup class="degree">°</sup></li>
+                <li class="wthree-temp"> 16 <sup class="degree">°</sup></li> 
+              </ul> 
+              <div class="clear"> </div>
+            </div>
+          </div>
+        </article>
+      </div>  
+    </div>	
+  </div>	
 </div>
 
 
