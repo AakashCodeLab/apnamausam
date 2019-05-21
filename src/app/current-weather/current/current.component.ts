@@ -64,7 +64,11 @@ export class CurrentComponent implements OnInit {
             this.lng = position.coords.longitude;
             this.location=this.getCurrentLocationAddress(this.lat,this.lng);
             this.getWeatherInfo(this.lat, this.lng, 'current', this.location );
-          });
+          }, function (e) {
+            //Your error handling here
+        }, {
+            enableHighAccuracy: true
+        });
       }
     }
       
@@ -88,6 +92,8 @@ export class CurrentComponent implements OnInit {
    
   }
 
+
+  
 
   getCurrentLocationAddress(lat, lng) {
     return this.weatherdataservice.getCurrentLocationAddress(lat, lng).subscribe(data => {
