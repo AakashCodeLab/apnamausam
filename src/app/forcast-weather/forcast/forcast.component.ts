@@ -63,7 +63,7 @@ export class ForcastComponent implements OnInit {
         this.getWeatherInfo(this.lat, this.lng, 'current', this.location );
         this.getWeatherInfo(this.lat, this.lng, 'forcast', this.location );
 
-      },function (e) {
+      }, (e)=> {
         alert(" Please Allow Location");
         this.weatherdataservice.getCurrentLocation().subscribe(data => {
           console.log(data);

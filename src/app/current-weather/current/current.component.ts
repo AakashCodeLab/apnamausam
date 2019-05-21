@@ -56,7 +56,7 @@ export class CurrentComponent implements OnInit {
         this.lng = position.coords.longitude;
         this.location=this.getCurrentLocationAddress(this.lat,this.lng);
         this.getWeatherInfo(this.lat, this.lng, 'current', this.location );
-      }, function (e) {
+      },  (e)=> {
         alert(" Please Allow Location");
         this.weatherdataservice.getCurrentLocation().subscribe(data => {
           console.log(data);
@@ -76,7 +76,7 @@ export class CurrentComponent implements OnInit {
     });
   }
   }
-  
+
   getWeatherInfo(lat, lng, type, location) {
     this.spinner.show();
     this.location = location;
