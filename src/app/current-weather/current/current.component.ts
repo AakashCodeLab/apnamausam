@@ -57,7 +57,7 @@ export class CurrentComponent implements OnInit {
         this.location=this.getCurrentLocationAddress(this.lat,this.lng);
         this.getWeatherInfo(this.lat, this.lng, 'current', this.location );
       }, function (e) {
-        //Your error handling here
+        alert("please allow location");
     }, {
         enableHighAccuracy: true
     });
