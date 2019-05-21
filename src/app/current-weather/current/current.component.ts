@@ -58,6 +58,15 @@ export class CurrentComponent implements OnInit {
         this.getWeatherInfo(this.lat, this.lng, 'current', this.location );
       }, function (e) {
         alert("please allow location");
+
+        navigator.geolocation.getCurrentPosition(position => {
+          this.lat = position.coords.latitude;
+          this.lng = position.coords.longitude;
+          this.location=this.getCurrentLocationAddress(this.lat,this.lng);
+          this.getWeatherInfo(this.lat, this.lng, 'current', this.location );
+        });
+
+
     }, {
         enableHighAccuracy: true
     });
