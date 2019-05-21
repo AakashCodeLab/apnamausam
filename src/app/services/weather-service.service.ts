@@ -19,8 +19,8 @@ export class WeatherDataService {
  
 
   getCurrentLocation(): Observable <any> {
-    const  url = `https://ip-api.com/json`;
-   // const  url = `https://ipinfo.io/geo?token=d1c9034c8cb0ad`;
+    //const  url = `https://ip-api.com/json`;
+    const  url = `https://ipinfo.io/geo?token=d1c9034c8cb0ad`;
     return this.httpClient.get(url).map((response) => {
       return response;
     });

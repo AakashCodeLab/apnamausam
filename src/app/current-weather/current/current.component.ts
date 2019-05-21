@@ -50,29 +50,49 @@ export class CurrentComponent implements OnInit {
   }
   getCurrentLocation() {
     this.spinner.show();
+    if (window.navigator.geolocation) {
+      window.navigator.geolocation.getCurrentPosition(position => {
+        this.lat = position.coords.latitude;
+        this.lng = position.coords.longitude;
+        this.location=this.getCurrentLocationAddress(this.lat,this.lng);
+        this.getWeatherInfo(this.lat, this.lng, 'current', this.location );
+      }, function (e) {
+        //Your error handling here
+    }, {
+        enableHighAccuracy: true
+    });
+  }else{
     this.weatherdataservice.getCurrentLocation().subscribe(data => {
-        console.log(data);
-        if(data.lat && data.lon!=null){
-        this.location=this.getCurrentLocationAddress(data.lat,data.lon);
-        this.getWeatherInfo(data.lat, data.lon, 'current', this.location );
-        }
-        
-      },error=>{
-        if (window.navigator.geolocation) {
-          window.navigator.geolocation.getCurrentPosition(position => {
-            this.lat = position.coords.latitude;
-            this.lng = position.coords.longitude;
-            this.location=this.getCurrentLocationAddress(this.lat,this.lng);
-            this.getWeatherInfo(this.lat, this.lng, 'current', this.location );
-          }, function (e) {
-            //Your error handling here
-        }, {
-            enableHighAccuracy: true
-        });
+      console.log(data);
+      let loc = data.loc.split(',');
+      let coords = {
+          lat: loc[0],
+          lon: loc[1]
+      };
+      if(coords.lat && coords.lon!=null){
+      this.location=this.getCurrentLocationAddress(coords.lat,coords.lon);
+      this.getWeatherInfo(coords.lat, coords.lon, 'current', this.location );
       }
-    }
       
-    );
+    },error=>{
+      if (window.navigator.geolocation) {
+        window.navigator.geolocation.getCurrentPosition(position => {
+          this.lat = position.coords.latitude;
+          this.lng = position.coords.longitude;
+          this.location=this.getCurrentLocationAddress(this.lat,this.lng);
+          this.getWeatherInfo(this.lat, this.lng, 'current', this.location );
+        }, function (e) {
+          //Your error handling here
+      }, {
+          enableHighAccuracy: true
+      });
+    }
+  }
+    
+  );
+  }
+
+   
   }
   getWeatherInfo(lat, lng, type, location) {
     this.spinner.show();
@@ -93,7 +113,7 @@ export class CurrentComponent implements OnInit {
   }
 
 
-  
+
 
   getCurrentLocationAddress(lat, lng) {
     return this.weatherdataservice.getCurrentLocationAddress(lat, lng).subscribe(data => {
