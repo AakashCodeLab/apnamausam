@@ -57,52 +57,26 @@ export class CurrentComponent implements OnInit {
         this.location=this.getCurrentLocationAddress(this.lat,this.lng);
         this.getWeatherInfo(this.lat, this.lng, 'current', this.location );
       }, function (e) {
-        alert("please allow location");
-
-        navigator.geolocation.getCurrentPosition(position => {
-          this.lat = position.coords.latitude;
-          this.lng = position.coords.longitude;
-          this.location=this.getCurrentLocationAddress(this.lat,this.lng);
-          this.getWeatherInfo(this.lat, this.lng, 'current', this.location );
+        alert(" Please Allow Location");
+        this.weatherdataservice.getCurrentLocation().subscribe(data => {
+          console.log(data);
+          let loc = data.loc.split(',');
+          let coords = {
+              lat: loc[0],
+              lon: loc[1]
+          };
+          if(coords.lat && coords.lon!=null){
+          this.location=this.getCurrentLocationAddress(coords.lat,coords.lon);
+          this.getWeatherInfo(coords.lat, coords.lon, 'current', this.location );
+          }
+          
         });
-
-
     }, {
         enableHighAccuracy: true
     });
-  }else{
-    this.weatherdataservice.getCurrentLocation().subscribe(data => {
-      console.log(data);
-      let loc = data.loc.split(',');
-      let coords = {
-          lat: loc[0],
-          lon: loc[1]
-      };
-      if(coords.lat && coords.lon!=null){
-      this.location=this.getCurrentLocationAddress(coords.lat,coords.lon);
-      this.getWeatherInfo(coords.lat, coords.lon, 'current', this.location );
-      }
-      
-    },error=>{
-      if (window.navigator.geolocation) {
-        window.navigator.geolocation.getCurrentPosition(position => {
-          this.lat = position.coords.latitude;
-          this.lng = position.coords.longitude;
-          this.location=this.getCurrentLocationAddress(this.lat,this.lng);
-          this.getWeatherInfo(this.lat, this.lng, 'current', this.location );
-        }, function (e) {
-          //Your error handling here
-      }, {
-          enableHighAccuracy: true
-      });
-    }
   }
-    
-  );
   }
-
-   
-  }
+  
   getWeatherInfo(lat, lng, type, location) {
     this.spinner.show();
     this.location = location;

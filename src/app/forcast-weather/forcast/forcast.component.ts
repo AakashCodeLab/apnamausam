@@ -63,36 +63,26 @@ export class ForcastComponent implements OnInit {
         this.getWeatherInfo(this.lat, this.lng, 'current', this.location );
         this.getWeatherInfo(this.lat, this.lng, 'forcast', this.location );
 
-      });
-  }else{
-    this.weatherdataservice.getCurrentLocation().subscribe(data => {
-      console.log(data);
-      let loc = data.loc.split(',');
-      let coords = {
-          lat: loc[0],
-          lon: loc[1]
-      };
-      if(coords.lat && coords.lon!=null){
-      this.location=this.getCurrentLocationAddress(coords.lat,coords.lon);
-      this.getWeatherInfo(coords.lat, coords.lon, 'current', this.location );
-      this.getWeatherInfo(coords.lat, coords.lon, 'forcast', this.location );
-      }
-    
-    },error=>{
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(position => {
-          this.lat = position.coords.latitude;
-          this.lng = position.coords.longitude;
-          this.location=this.getCurrentLocationAddress(this.lat,this.lng);
-          this.getWeatherInfo(this.lat, this.lng, 'current', this.location );
-          this.getWeatherInfo(this.lat, this.lng, 'forcast', this.location );
-
+      },function (e) {
+        alert(" Please Allow Location");
+        this.weatherdataservice.getCurrentLocation().subscribe(data => {
+          console.log(data);
+          let loc = data.loc.split(',');
+          let coords = {
+              lat: loc[0],
+              lon: loc[1]
+          };
+          if(coords.lat && coords.lon!=null){
+          this.location=this.getCurrentLocationAddress(coords.lat,coords.lon);
+          this.getWeatherInfo(coords.lat, coords.lon, 'current', this.location );
+          this.getWeatherInfo(coords.lat, coords.lon, 'forcast', this.location );
+          }
+        
         });
-    }
+    }, {
+        enableHighAccuracy: true
+    });
   }
-  );
-  }
-
   }
 
 
