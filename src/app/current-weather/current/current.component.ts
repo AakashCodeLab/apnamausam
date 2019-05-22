@@ -56,8 +56,9 @@ export class CurrentComponent implements OnInit {
         this.lng = position.coords.longitude;
         this.location=this.getCurrentLocationAddress(this.lat,this.lng);
         this.getWeatherInfo(this.lat, this.lng, 'current', this.location );
+        this.getHourlyForcast(this.lat,this.lng, null,'latlon');
       },  (e)=> {
-        alert(" Please Allow Location");
+        confirm(" Please Allow Location");
         this.weatherdataservice.getCurrentLocation().subscribe(data => {
           console.log(data);
           let loc = data.loc.split(',');
@@ -106,7 +107,13 @@ export class CurrentComponent implements OnInit {
       }
     );
   }
-
+  getHourlyForcast(lat ,lon, city, type: any ){
+    this.weatherdataservice.getHourlyForcast(lat ,lon, city, type ).subscribe(data => {
+      console.log('HourlyForcast',data);
+      this.spinner.hide();
+    }
+  );
+  }
 
   receiveMessage($event) {
     this.spinner.show();
@@ -115,15 +122,20 @@ export class CurrentComponent implements OnInit {
     this.lng = $event.lng;
     this.city = $event.city;
     if ($event.weatherType === 'city' ) {
+      this.getHourlyForcast(null,null, this.city,'city');
       this.weatherdataservice.getWeatherDataByCity(this.city, null, 'current' ).subscribe(data => {
           console.log(data);
           this.spinner.hide();
           this.getCurrentLocationAddress( data.coord.lat,data.coord.lon);
+
           this.currentWeather=data;
         }
       );
+
+      
     } else {
       this.getWeatherInfo(this.lat, this.lng, 'current', $event.address );
+      this.getHourlyForcast(this.lat,this.lng, this.city,'latlon');
     }
   }
 

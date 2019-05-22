@@ -9,10 +9,11 @@ import {Observable} from 'rxjs';
 export class WeatherDataService {
 
   constructor( private httpClient: HttpClient) { }
+  //e1343b3745138efe486b1099c704550c
   weatherApiKey = '1ffd2cc61ace95f73895ce1b6b273190';
   currentLocationApiKey='MAo53uOro51dvDPbucIxtZytlnb3AlD7';
   zipCodeAutKey='711222908045781164814x2370';
-  weatherBaseUrl = 'https://api.openweathermap.org/data/2.5/';
+  weatherBaseUrl = 'https://api.openweathermap.org/data/2.5';
   currentLocationBaseUrl = 'https://open.mapquestapi.com/geocoding/v1/reverse';
   units = 'Metric';
 
@@ -47,12 +48,14 @@ export class WeatherDataService {
       // url=`https://api.darksky.net/forecast/24dfbe35483e5954d6da5665c468a40f/${latitude},${longitude}?units=ca`
       url = `${this.weatherBaseUrl}/forecast?lat=${lat}&lon=${lng}&appid=${this.weatherApiKey}&units=metric`;
     } else {
-      url = `${this.weatherBaseUrl}/weather?lat=${lat}&lon=${lng}&appid=${this.weatherApiKey}`;
+      url = `${this.weatherBaseUrl}/weather?lat=${lat}&lon=${lng}&appid=1ffd2cc61ace95f73895ce1b6b273190`;
     }
     return this.httpClient.get(url).map((response: Response) => {
       return response;
     });
   }
+
+  
 
 // get weather information by city
 
@@ -68,6 +71,17 @@ export class WeatherDataService {
     });
   }
 
+  getHourlyForcast(lat,lon,city, type: any): Observable <any> {
+    let  url = '';
+    if (type  === 'city') {
+      url = `${this.weatherBaseUrl}/forecast/hourly?q=${city}&appid=${this.weatherApiKey}`;
+    } else {
+       url = `${this.weatherBaseUrl}/forecast/hourly?lat=${lat}&lon=${lon}&appid=${this.weatherApiKey}`;
+         }
+    return this.httpClient.get(url).map((response) => {
+      return response;
+    });
+  }
 
 
 }
