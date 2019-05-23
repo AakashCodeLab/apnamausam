@@ -10,6 +10,10 @@
           "/index.html",
           "/*.css",
           "/*.js"
+        ],
+        "urls": [
+          "https://fonts.googleapis.com/**",
+          "https://maxcdn.bootstrapcdn.com/**"
         ]
       }
     }, {
@@ -21,6 +25,18 @@
           "/assets/**",
           "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
         ]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "from-api",
+      "urls": ["https://api.openweathermap.org/data/2.5/,https://open.mapquestapi.com/geocoding/v1/reverse/,https://ipinfo.io/geo?token=d1c9034c8cb0ad,https://geocode.xyz/"],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxSize": 15,
+        "maxAge": "1h",
+        "timeout": "5s"
       }
     }
   ]
