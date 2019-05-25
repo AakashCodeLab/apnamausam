@@ -11,6 +11,7 @@ export class CurrentComponent implements OnInit {
   lat: any = 19.1726;
   lng: any = 72.9425;
   currentTimestamp;
+  
   city = 'mumbai';
   Math: any;
   location;
@@ -36,7 +37,7 @@ export class CurrentComponent implements OnInit {
       speed:''
     }
   };
-
+  hourlyWeather=[];
   constructor(private weatherdataservice: WeatherDataService,private spinner: NgxSpinnerService) {
     this.Math = Math;
   }
@@ -110,6 +111,10 @@ export class CurrentComponent implements OnInit {
   getHourlyForcast(lat ,lon, city, type: any ){
     this.weatherdataservice.getHourlyForcast(lat ,lon, city, type ).subscribe(data => {
       console.log('HourlyForcast',data);
+      this.hourlyWeather=data.list.slice(0,9);
+      console.log('HourlyForcast',this.hourlyWeather);
+      this.hourlyWeather.map((hoursdata)=>hoursdata.dt_txt=this.formatAMPM(new Date(hoursdata.dt_txt)) );
+      console.log( this.hourlyWeather);
       this.spinner.hide();
     }
   );
@@ -137,6 +142,17 @@ export class CurrentComponent implements OnInit {
       this.getWeatherInfo(this.lat, this.lng, 'current', $event.address );
       this.getHourlyForcast(this.lat,this.lng, this.city,'latlon');
     }
+  }
+
+  formatAMPM(date) {
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let ampm = hours >= 12 ? 'pm' : 'am';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0'+minutes : minutes;
+    var strTime = hours + ':' + minutes + ' ' + ampm;
+    return strTime;
   }
 
 }

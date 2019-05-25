@@ -16,7 +16,7 @@ export class WeatherDataService {
   weatherBaseUrl = 'https://api.openweathermap.org/data/2.5';
   currentLocationBaseUrl = 'https://open.mapquestapi.com/geocoding/v1/reverse';
   units = 'Metric';
-
+ 
  
 
   getCurrentLocation(): Observable <any> {
@@ -74,9 +74,9 @@ export class WeatherDataService {
   getHourlyForcast(lat,lon,city, type: any): Observable <any> {
     let  url = '';
     if (type  === 'city') {
-      url = `${this.weatherBaseUrl}/forecast/hourly?q=${city}&appid=${this.weatherApiKey}`;
+      url = `${this.weatherBaseUrl}/forecast?q=${city}&appid=${this.weatherApiKey}`;
     } else {
-       url = `${this.weatherBaseUrl}/forecast/hourly?lat=${lat}&lon=${lon}&appid=${this.weatherApiKey}`;
+       url = `${this.weatherBaseUrl}/forecast?lat=${lat}&lon=${lon}&appid=${this.weatherApiKey}`;
          }
     return this.httpClient.get(url).map((response) => {
       return response;
