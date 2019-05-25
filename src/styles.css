@@ -1,9 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 body{
-  /*
-  background:url('https://res.cloudinary.com/ddqhcwp8j/image/upload/v1469646986/mist_fcjita.jpg');
-  */
+ 
 
   background-repeat: no-repeat;
   background-size: cover;
@@ -44,7 +42,8 @@ img{max-width:100%;}
 /*-- end reset --*/
 body {
     font-family: 'Open Sans', sans-serif;
-    background: url(./app/images/a.jpg)no-repeat 0px 0px;
+    /* background: url(./app/images/a.jpg)no-repeat 0px 0px; */
+    background: linear-gradient(to right, rgb(15, 12, 41), rgb(48, 43, 99), rgb(36, 36, 62));
     background-attachment: fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -173,7 +172,7 @@ div#txt {
 .wthree-grids ul li {
     display: inline-block;
     float: left;
-    width: 32%;
+    width: 22%;
     line-height: 2em;
     font-size: .9em;
     color: #888;
@@ -264,7 +263,7 @@ div#txt {
 	background-color: #E259C6;
 }
 .ac-container input:checked ~ article.ac-small {
-    height: 20.5em;
+    height: 29.5em;
     background: #fff; 
 }
 /*-- //weak-accordion --*/

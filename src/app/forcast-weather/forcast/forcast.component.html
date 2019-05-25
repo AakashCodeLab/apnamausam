@@ -1,6 +1,6 @@
 <app-header-nav  (messageEvent)="receiveMessage($event)" ></app-header-nav>
-<div  class="container card" style="margin-top:6px;background-repeat: no-repeat; background: url(../../../assets/images/spots_background_light_blur_68629_1920x1080.jpg);box-shadow: 9px 7px 40px -6px rgba(0, 0, 0, 0.25);">
-  <div style="display: flex;justify-content: space-around ;      flex-wrap: wrap;  padding-top: 40px;" >
+<div  class="container card forcast" style="margin-top:6px;background-repeat: no-repeat;box-shadow: 9px 7px 40px -6px rgba(0, 0, 0, 0.25);">
+  <div style="display: flex;justify-content: space-around ;font-size: 22px; flex-wrap: wrap;  padding-top: 40px;" >
     <div>
       <img src="../../../assets/images/Marker_64px.png">
       <p>Weather Forcast in</p>
@@ -13,7 +13,7 @@
     </div>
   </div>
   <div style="display: flex;justify-content: space-around ;    flex-wrap: wrap;" >
-    <div>
+    <div style="font-size:18px">
       <p><span> <img src="../../../assets/images/Atmospheric%20Pressure-44%20(1).png"></span> Pressure: {{currentWeather.main.pressure| number : '1.2-2'}} inHG</p>
       <p><span> <img src="../../../assets/images/Humidity_44px.png"></span>Humidity: {{currentWeather.main.humidity }}%</p>
       <p><span> <img src="../../../assets/images/Wind%20Speed%2098-102_44px.png"></span>Wind Speed : {{currentWeather.wind.speed}} m/sec</p>
@@ -22,11 +22,11 @@
     <div style="display: flex;flex-direction: column;align-items: center;margin-top: -10px; line-height: 10px;">
       <p style="font-size: 23px;font-weight: 600;">{{this.Math.round(currentWeather.main.temp)}} &deg;C </p>
       <img height=100px; width=100px src="https://openweathermap.org/img/w/{{currentWeather.weather[0].icon}}.png" class='img img-responsive center-block'>
-      <p>{{currentWeather.weather["0"].description}}</p>
-      <p  (click)="refreshData()">Last update at: {{lastUpdateAt}} <span><i class="fa fa-refresh"></i></span></p>  
+      <p style="font-size: 18px">{{currentWeather.weather["0"].description}}</p>
+      <p style="padding-top:8px" (click)="refreshData()">Last update at: {{lastUpdateAt}} <span><i class="fa fa-refresh"></i></span></p>  
     </div>
     <div style="border: 1px solid  #fff;height: 160px;"></div>
-    <div>
+    <div style="font-size:180x" >
       <p>Min temp</p>
       <p>{{this.Math.round(currentWeather.main.temp_min )}} &deg;C <span> <img src="../../../assets/images/Thermometer-44.png"></span></p>
       <p style="border: 1px solid  #fff"></p>
@@ -37,14 +37,14 @@
 
 
 
-  <div class="row col-sm-12  d-flex" style="justify-content: space-evenly;padding-bottom: 20px;">
+  <div  class="row col-sm-12  d-flex" style="justify-content: space-evenly;padding-bottom: 20px;margin-top: 30px;">
 <div class="">
-  <p>{{this.Math.round(currentWeather.main.temp)}} &deg;C </p>
-  <p>{{currentDate}}</p>
+  <p style="font-size: 22px;">{{this.Math.round(currentWeather.main.temp)}} &deg;C </p>
+  <p style="font-size: 22px;"> {{currentDate}}</p>
 </div>
     <div class="" style="border: 1px solid #fff;height: 70px;"></div>
     <div class="row col-sm-8 d-flex" style="justify-content: space-evenly">
-      <div style="    text-align: center;" *ngFor="let weather of forecast" >
+      <div style="font-size:18px;    text-align: center;" *ngFor="let weather of forecast" >
         <p>{{weather.dt_txt| date : 'EEEE '}}</p>
         <img height=100px; width=100px src="https://openweathermap.org/img/w/{{weather.weather[0].icon}}.png" class='img img-responsive center-block' (click)="setWeatherDetail(weather);">
 

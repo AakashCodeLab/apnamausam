@@ -41,13 +41,27 @@ export class CurrentComponent implements OnInit {
   constructor(private weatherdataservice: WeatherDataService,private spinner: NgxSpinnerService) {
     this.Math = Math;
   }
-
+  period=0;
+  timeinterval;
   ngOnInit() {
     setInterval(() => {      
       this.currentTimestamp=new Date().toLocaleTimeString();
     }, 1000);
     this.currentDate=new Date().toDateString();
     this.getCurrentLocation();
+
+   setInterval(() => {      
+      if (this.period != 0) {
+        this.period = 0;
+    } else {
+        this.period = 1;
+    }
+  
+    }, 1500);
+
+
+ 
+
   }
   getCurrentLocation() {
     this.spinner.show();
@@ -113,8 +127,17 @@ export class CurrentComponent implements OnInit {
       console.log('HourlyForcast',data);
       this.hourlyWeather=data.list.slice(0,9);
       console.log('HourlyForcast',this.hourlyWeather);
-      this.hourlyWeather.map((hoursdata)=>hoursdata.dt_txt=this.formatAMPM(new Date(hoursdata.dt_txt)) );
+      this.hourlyWeather.map((hoursdata)=>{
+        if(hoursdata.main.temp>100){
+          hoursdata.main.temp=this.Math.round( hoursdata.main.temp - 273);  
+          hoursdata.main.temp_min=this.Math.round( hoursdata.main.temp_min - 273);
+          hoursdata.main.temp_max=this.Math.round( hoursdata.main.temp_max - 273);
+        }
+        hoursdata.main.pressure= hoursdata.main.pressure *0.0295301 ;
+        hoursdata.dt_txt=this.formatAMPM(new Date(hoursdata.dt_txt));
+       });
       console.log( this.hourlyWeather);
+    
       this.spinner.hide();
     }
   );
@@ -132,7 +155,11 @@ export class CurrentComponent implements OnInit {
           console.log(data);
           this.spinner.hide();
           this.getCurrentLocationAddress( data.coord.lat,data.coord.lon);
-
+          if(data.main.temp>100){
+            data.main.temp=this.Math.round( data.main.temp - 273);  
+            data.main.temp_min=this.Math.round( data.main.temp_min - 273);
+            data.main.temp_max=this.Math.round( data.main.temp_max - 273);
+          }
           this.currentWeather=data;
         }
       );

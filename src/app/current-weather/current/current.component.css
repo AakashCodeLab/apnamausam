@@ -1,0 +1,17 @@
+body{
+    font-family: 'Dosis', sans-serif !important;
+
+}
+.main-wthree-row{
+    font-family: 'Dosis', sans-serif !important;
+
+}
+.transweather{
+    transform: translate3d(-168px, 0px, 0px);
+}
+.transweatherStart{
+    transform: translate3d(0px, 0px, 0px);
+}
+.transweathermiddle{
+    transform: translate3d(-120px, 0px, 0px);
+}
