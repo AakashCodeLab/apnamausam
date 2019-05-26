@@ -143,7 +143,7 @@ export class CurrentComponent implements OnInit {
   );
   }
 
-  receiveMessage($event) {
+  receiveMessageFromHeaderNavbar($event) {
     this.spinner.show();
     console.log('from current', $event);
     this.lat = $event.lat;

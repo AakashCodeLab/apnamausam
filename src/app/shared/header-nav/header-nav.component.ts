@@ -15,7 +15,7 @@ declare var $: any;
 export class HeaderNavComponent implements OnInit {
   city = true;
   @ViewChild('search') public searchElement: ElementRef;
-  @Output() messageEvent = new EventEmitter<any>();
+  @Output() messageEventFromHeader = new EventEmitter<any>();
 
   constructor(private spinner: NgxSpinnerService,private weatherdataservice: WeatherDataService,private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private router: Router) {}
 requestObj = {
@@ -49,7 +49,7 @@ searchValue = new FormGroup({
           this.requestObj.address = data.standard.addresst;
           this.requestObj.city = data.standard.city;
           this.requestObj.weatherType='latlng';
-          this.messageEvent.emit(this.requestObj);
+          this.messageEventFromHeader.emit(this.requestObj);
            }
           );
       
@@ -59,7 +59,7 @@ searchValue = new FormGroup({
             delete this.requestObj.lng;
             delete this.requestObj.address;
             this.requestObj.weatherType='city';
-            this.messageEvent.emit(this.requestObj);
+            this.messageEventFromHeader.emit(this.requestObj);
      
     }
   }

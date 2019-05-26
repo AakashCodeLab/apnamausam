@@ -133,7 +133,7 @@ export class ForcastComponent implements OnInit {
 
 
 
-  receiveMessage($event) {
+  receiveMessageFromHeaderNavbar($event) {
     this.spinner.show();
     console.log('from forcast', $event);
     this.lat = $event.lat;
