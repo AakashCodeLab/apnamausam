@@ -20,6 +20,10 @@ export class AppComponent implements OnInit{
           this.status = "ONLINE";
         } else {
           this.status = "OFFLINE";
+          const snack = this.snackbar.open('Connection Lost....','',{
+            duration: 7000,
+            panelClass: ['blue-snackbar']
+          });
         }
       })
       this.swUpdate.available.subscribe(evt => {
