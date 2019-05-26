@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-sm navbar-dark" style="background: linear-gradient(to right, rgb(65, 41, 90), rgb(47, 7, 67));">
+<nav [ngClass]="(currentUrl=='/current')?'backgoundCuurent':'backgroundForcast'" class="navbar navbar-expand-sm navbar-dark" style="">
   <a class="navbar-brand" href="#">ApnaMausam</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>

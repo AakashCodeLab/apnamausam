@@ -14,6 +14,7 @@ declare var $: any;
 })
 export class HeaderNavComponent implements OnInit {
   city = true;
+  currentUrl='/current'
   @ViewChild('search') public searchElement: ElementRef;
   @Output() messageEventFromHeader = new EventEmitter<any>();
 
@@ -32,7 +33,8 @@ searchValue = new FormGroup({
  });
 
   ngOnInit() {
-
+console.log(this.router.url);
+this.currentUrl=this.router.url;
   }
 
   emitLocationData(){
