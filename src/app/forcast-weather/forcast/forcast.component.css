@@ -10,5 +10,6 @@ p{
 }
 .card.forcast{
   /* background: linear-gradient(to right, rgb(65, 41, 90), rgb(47, 7, 67)); */
-  background: linear-gradient(to right, rgb(195, 20, 50), rgb(36, 11, 54));
+  /*background: linear-gradient(to right, rgb(195, 20, 50), rgb(36, 11, 54));*/
+  background-image: linear-gradient(-20deg, rgb(97, 97, 97) 0%, rgb(155, 197, 195) 100%);
 }

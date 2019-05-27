@@ -11,24 +11,24 @@ import { ConnectionService } from 'ng-connection-service';
 export class AppComponent implements OnInit{
   status = 'ONLINE';
   isConnected = true;
-  constructor(private spinner: NgxSpinnerService,private swUpdate: SwUpdate, private swPush: SwPush,
-    private snackbar: MatSnackBar, private connectionService: ConnectionService) {
+  constructor(private spinner: NgxSpinnerService, private swUpdate: SwUpdate, private swPush: SwPush,
+              private snackbar: MatSnackBar, private connectionService: ConnectionService) {
 
       this.connectionService.monitor().subscribe(isConnected => {
         this.isConnected = isConnected;
         if (this.isConnected) {
-          this.status = "ONLINE";
+          this.status = 'ONLINE';
         } else {
-          this.status = "OFFLINE";
-          const snack = this.snackbar.open('Connection Lost....','',{
+          this.status = 'OFFLINE';
+          const snack = this.snackbar.open('Connection Lost....', '', {
             duration: 7000,
-            panelClass: ['blue-snackbar']
+            panelClass: ['red-snackbar']
           });
         }
       })
       this.swUpdate.available.subscribe(evt => {
   this.swUpdate.checkForUpdate().then(() => {
-  
+
           const snack = this.snackbar.open('Update Available', 'Reload',{
             duration: 7000,
             panelClass: ['blue-snackbar']
@@ -38,7 +38,7 @@ export class AppComponent implements OnInit{
             .subscribe(() => {
               window.location.reload();
             });
-  
+
           setTimeout(() => {
             snack.dismiss();
           }, 5000);
@@ -46,9 +46,9 @@ export class AppComponent implements OnInit{
       });
 
 
-    if (window.navigator) {
+      if (window.navigator) {
       window.navigator.geolocation.getCurrentPosition(position => {
-  
+
       });
     }
    }

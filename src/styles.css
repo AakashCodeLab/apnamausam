@@ -1,12 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
 
 body{
- 
+
 
   background-repeat: no-repeat;
   background-size: cover;
 }
-/* 
+
+.blue-snackbar {
+  background: #2196F3;
+  color:white;
+}
+
+.green-snackbar {
+  background: rgb(41, 177, 86);
+  color:white;
+}
+.red-snackbar {
+  background: rgb(216, 8, 8);
+  color:white;
+}
+/*
  * 	Core Owl Carousel CSS File
  *	v1.3.3
  */
@@ -72,15 +86,15 @@ h1 {
     width: 30%;
     margin: 3.5em auto 2em;
 	background: #fff;
-} 
+}
 /*-- agileits-top --*/
 .agileits-top {
     background: url(./app/images/1.jpg)no-repeat 0px 0px;
     background-size: cover;
     min-height: 310px;
-} 
+}
 .agileinfo-top-row{
-	position:relative; 
+	position:relative;
 	padding:0 3em;
 }
 .agileinfo-top-img span {
@@ -108,7 +122,7 @@ h1 {
     font-size: 1.5em;
     text-align: right;
     font-weight: 600;
-} 
+}
 .agileinfo-top-time {
     padding: 2.5em 0 0;
 }
@@ -139,11 +153,11 @@ div#txt {
 }
 .main a.lightbox {
     display: block;
-} 
+}
 .biseller-column:hover p {
     color: #00bbb4;
 }
-/*-- carousel --*/ 
+/*-- carousel --*/
 #owl-demo .item {
 	padding: 15px 0px;
 	margin: 1em 1em;
@@ -178,7 +192,7 @@ div#txt {
     color: #888;
 }
 .wthree-grids ul li.wthree-img {
-    text-align: center; 
+    text-align: center;
 }
 .wthree-grids ul li.wthree-img img {
     width: 35px;
@@ -215,7 +229,7 @@ div#txt {
     height: 11px;
     right: 13px;
     top: 15px;
-    background: url(./app/images/arrow_up.png) no-repeat -4px -5px; 
+    background: url(./app/images/arrow_up.png) no-repeat -4px -5px;
     -webkit-transition: .5s all;
     -moz-transition: .5s all;
     -o-transition: .5s all;
@@ -264,7 +278,7 @@ div#txt {
 }
 .ac-container input:checked ~ article.ac-small {
     height: 29.5em;
-    background: #fff; 
+    background: #fff;
 }
 /*-- //weak-accordion --*/
 /*-- //main --*/
@@ -283,17 +297,17 @@ div#txt {
 }
 .copyright p a:hover {
 	color: #ffd61c;
-} 
+}
 /*-- //copyright --*/
-/*-- responsive-design --*/ 
+/*-- responsive-design --*/
 @media(max-width:1280px){
 .main-wthree-row {
     width: 36%;
 }
-#owl-demo .item { 
-    margin: 1em 1em 0.5em; 
+#owl-demo .item {
+    margin: 1em 1em 0.5em;
 }
-.agileits-top { 
+.agileits-top {
     min-height: 290px;
 }
 .agileinfo-top-time {
@@ -304,41 +318,41 @@ div#txt {
 .main-wthree-row {
     width: 46%;
 }
-.agileinfo-top-row { 
+.agileinfo-top-row {
     padding: 0 2em;
-} 
-} 
+}
+}
 @media(max-width:900px){
 .w3ls-bottom2 {
     padding: 0 1.5em 1.5em;
 }
 .agileinfo-top-row h3 {
-    font-size: 3.5em; 
+    font-size: 3.5em;
 }
-.agileinfo-top-row p { 
-    font-size: 1.3em; 
+.agileinfo-top-row p {
+    font-size: 1.3em;
 }
 .agileits-top {
     min-height: 275px;
 }
-div#txt { 
-    font-size: 1.8em; 
+div#txt {
+    font-size: 1.8em;
 }
-.w3ls-bottom { 
-    padding: 3em 1em 0 0.5em; 
+.w3ls-bottom {
+    padding: 3em 1em 0 0.5em;
 }
-.main h2 { 
-    margin-right: 1em; 
+.main h2 {
+    margin-right: 1em;
 }
-.agileinfo-top-img span {  
+.agileinfo-top-img span {
     height: 120px;
-    width: 130px; 
+    width: 130px;
     top: -19%;
     left: -2%;
     background-size: 100%;
 }
 h1 {
-    font-size: 2.1em; 
+    font-size: 2.1em;
 }
 .main {
     padding: 1.5em 0 0;
@@ -350,10 +364,10 @@ h1 {
 }
 @media(max-width:800px){
 .main-wthree-row {
-    width: 57%; 
+    width: 57%;
 }
 .ac-container input:checked ~ article.ac-small {
-    height: 20em; 
+    height: 20em;
 }
 }
 @media(max-width:768px){
@@ -361,7 +375,7 @@ h1 {
     height: 99px;
     width: 108px;
     top: -17%;
-    left: -1%; 
+    left: -1%;
 }
 .agileinfo-top-row h3 {
     font-size: 3em;
@@ -390,18 +404,18 @@ div#txt {
 .main-wthree-row {
     width: 65%;
 }
-.copyright { 
+.copyright {
     padding: 1em 1em 2em;
 }
 }
-@media(max-width:568px){ 
+@media(max-width:568px){
 .main-wthree-row {
     width: 75%;
 }
 h1 {
     font-size: 1.9em;
 }
-} 
+}
 @media(max-width:480px){
 .main-wthree-row {
     width: 80%;
@@ -418,11 +432,11 @@ h1 {
 }
 .w3ls-bottom2 {
     padding: 0 1.2em 1em;
-} 
+}
 #owl-demo .item {
     margin: 1em 1em 0;
 }
-.copyright p { 
+.copyright p {
     font-size: 0.9em;
 }
 }
@@ -442,33 +456,33 @@ h1 {
 }
 .agileinfo-top-img span {
     height: 83px;
-    width: 90px; 
+    width: 90px;
     left: 0%;
 }
 .agileits-top {
     min-height: 220px;
 }
 .date {
-    font-size: 0.8em; 
+    font-size: 0.8em;
 	margin-top: 0.5em;
 }
 div#txt {
     font-size: 1.5em;
-} 
+}
 .wthree-grids ul li.wthree-img img {
     width: 30px;
     height: 29px;
     margin-top: 1px;
 }
 .wthree-grids ul {
-    padding: 0.6em 0 0; 
+    padding: 0.6em 0 0;
 }
 .ac-container input:checked ~ article.ac-small {
     height: 18.2em;
 }
 .w3ls-bottom {
     padding: 3em 1em 0 0.5em;
-} 
+}
 #owl-demo .item {
     margin: 0.5em 1em;
 }
@@ -477,11 +491,11 @@ h1 {
 }
 }
 @media(max-width:384px){
-.agileinfo-top-img span { 
+.agileinfo-top-img span {
     top: -14%;
 }
 .biseller-column p {
-    font-size: 0.85em; 
+    font-size: 0.85em;
 }
 #owl-demo .item {
     margin: 0 1em;
@@ -489,10 +503,10 @@ h1 {
 .w3ls-bottom {
     padding: 2.2em 1em 0 0.5em;
 }
-.ac-container label { 
-    font-size: 0.9em; 
+.ac-container label {
+    font-size: 0.9em;
 }
-} 
+}
 @media(max-width:320px){
 h1 {
     font-size: 1.5em;
@@ -521,7 +535,7 @@ div#txt {
 .agileits-top {
     min-height: 175px;
 }
-.w3ls-bottom { 
+.w3ls-bottom {
     margin-top: -2em;
 }
 .w3ls-bottom2 {
@@ -539,7 +553,7 @@ div#txt {
 }
 }
 /*-- //responsive-design --*/
-/* 
+/*
  * 	Core Owl Carousel CSS File
  *	v1.3.3
  */
@@ -561,15 +575,7 @@ div#txt {
 	-ms-touch-action: pan-y;
 	background: #fff;
 }
-.owl-carousel .owl-wrapper{
-	display: none;
-	position: relative;
-  	-ms-transition: translate3d(0px, 0px, 0px);
-  	-o-transition: translate3d(0px, 0px, 0px);
-	transition: translate3d(0px, 0px, 0px);
-  	-moz-transition:translate3d(0px, 0px, 0px);
-	-webkit-transform: translate3d(0px, 0px, 0px);
-}
+
 .owl-carousel .owl-wrapper-outer{
 	overflow: hidden;
 	position: relative;
@@ -582,7 +588,7 @@ div#txt {
 	-o-transition: height 500ms ease-in-out;
 	transition: height 500ms ease-in-out;
 }
-	
+
 .owl-carousel .owl-item{
 	float: left;
 }
@@ -599,10 +605,6 @@ div#txt {
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-/* mouse grab icon */
-.grabbing { 
-    cursor:url() 8 8, move;
-}
 
 /* fix */
 .owl-carousel  .owl-wrapper,

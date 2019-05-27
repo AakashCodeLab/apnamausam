@@ -10,7 +10,7 @@ type="ball-scale-multiple">
 
 
 <div class="main">
- 
+
   <!---728x90--->
 
   <div class="main-wthree-row">
@@ -21,32 +21,16 @@ type="ball-scale-multiple">
         </div>
         <h3>{{currentWeather.main.temp}}<sup class="degree">°</sup><span>C</span></h3>
         <p style="max-width: 420px;">{{location }}</p>
-        <div class="agileinfo-top-time"> 
+        <div class="agileinfo-top-time">
           <div class="date-time">
             <div class="dmy">
               <div id="txt">{{currentTimestamp}}</div>
               <div class="date">
-                <!-- Date-JavaScript -->
-                <script type="text/javascript">
-                var mydate=new Date()
-                var year=mydate.getYear()
-                if(year<1000)
-                year+=1900
-                var day=mydate.getDay()
-                var month=mydate.getMonth()
-                var daym=mydate.getDate()
-                if(daym<10)
-                daym="0"+daym
-                var dayarray=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday")
-                var montharray=new Array("January","February","March","April","May","June","July","August","September","October","November","December")
-                document.write(""+dayarray[day]+", "+montharray[month]+" "+daym+", "+year+"")
-                </script>
                {{currentDate}}
-                <!-- //Date-JavaScript -->
               </div>
-            </div> 
+            </div>
             <div class="clear"></div>
-          </div>  
+          </div>
         </div>
       </div>
     </div>
@@ -62,18 +46,18 @@ type="ball-scale-multiple">
             <p>{{hourlyweather.dt_txt}}</p>
             <a class="lightbox" href="#">
               <img src="https://openweathermap.org/img/w/{{hourlyweather.weather[0].icon}}.png" alt="">
-            </a> 
+            </a>
             <p>{{hourlyweather.main.temp}}<sup class="degree">°</sup></p>
           </div>
             </div>
           </div>
       </div>
-    </div> 
-        
-      <div class="owl-controls clickable">
-        <div class="owl-pagination"><div class="owl-page"><span class=""></span></div><div class="owl-page active"><span class=""></span></div><div class="owl-page"><span class=""></span></div></div></div></div>  
     </div>
-    <div class="w3ls-bottom2">	 
+
+      <div class="owl-controls clickable">
+        <div class="owl-pagination"><div class="owl-page"><span class=""></span></div><div class="owl-page active"><span class=""></span></div><div class="owl-page"><span class=""></span></div></div></div></div>
+    </div>
+    <div class="w3ls-bottom2">
       <div class="ac-container">
         <input id="ac-1" name="accordion-1" type="checkbox">
         <label for="ac-1" class="grid1"> Hourly Details</label>
@@ -85,16 +69,16 @@ type="ball-scale-multiple">
                 <li>{{hourlyweather.weather[0].description}} </li>
                 <li class="wthree-img"><img  src="https://openweathermap.org/img/w/{{hourlyweather.weather[0].icon}}.png" alt=""> </li>
                 <li class="wthree-temp"> {{hourlyweather.main.temp_min}} <sup class="degree">°</sup></li>
-                <li class="wthree-temp"> {{hourlyweather.main.temp_max}} <sup class="degree">°</sup></li> 
-              
-         </ul> 
+                <li class="wthree-temp"> {{hourlyweather.main.temp_max}} <sup class="degree">°</sup></li>
+
+         </ul>
               <div class="clear"> </div>
             </div>
           </div>
         </article>
-      </div>  
-    </div>	
-  </div>	
+      </div>
+    </div>
+  </div>
 </div>
 
 

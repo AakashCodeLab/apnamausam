@@ -1,5 +1,6 @@
 <app-header-nav  (messageEventFromHeader)="receiveMessageFromHeaderNavbar($event)" ></app-header-nav>
-<div  class="container card forcast" style="margin-top:6px;background-repeat: no-repeat;box-shadow: 9px 7px 40px -6px rgba(0, 0, 0, 0.25);">
+<!--background-repeat: no-repeat;box-shadow: 9px 7px 40px -6px rgba(0, 0, 0, 0.25);-->
+<div  class="container card forcast" style="margin-top:6px;">
   <div style="display: flex;justify-content: space-around ;font-size: 22px; flex-wrap: wrap;  padding-top: 40px;" >
     <div>
       <img src="../../../assets/images/Marker_64px.png">
@@ -23,7 +24,7 @@
       <p style="font-size: 23px;font-weight: 600;">{{this.Math.round(currentWeather.main.temp)}} &deg;C </p>
       <img height=100px; width=100px src="https://openweathermap.org/img/w/{{currentWeather.weather[0].icon}}.png" class='img img-responsive center-block'>
       <p style="font-size: 18px">{{currentWeather.weather["0"].description}}</p>
-      <p style="padding-top:8px" (click)="refreshData()">Last update at: {{lastUpdateAt}} <span><i class="fa fa-refresh"></i></span></p>  
+      <p style="padding-top:8px" (click)="refreshData()">Last update at: {{lastUpdateAt}} <span><i class="fa fa-refresh"></i></span></p>
     </div>
     <div style="border: 1px solid  #fff;height: 160px;"></div>
     <div style="font-size:180x" >
