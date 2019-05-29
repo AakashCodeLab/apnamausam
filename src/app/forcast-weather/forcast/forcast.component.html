@@ -1,58 +1,185 @@
 <app-header-nav  (messageEventFromHeader)="receiveMessageFromHeaderNavbar($event)" ></app-header-nav>
 <!--background-repeat: no-repeat;box-shadow: 9px 7px 40px -6px rgba(0, 0, 0, 0.25);-->
+<!--<div  class="container card forcast" style="margin-top:6px;">-->
+  <!--<div style="display: flex;justify-content: space-around ;font-size: 22px; flex-wrap: wrap;  padding-top: 40px;" >-->
+    <!--<div>-->
+      <!--<img src="../../../assets/images/Marker_64px.png">-->
+      <!--<p>Weather Forcast in</p>-->
+    <!--</div>-->
+    <!--<div>-->
+      <!--<p>{{location}}</p>-->
+    <!--</div>-->
+    <!--<div>-->
+      <!--<p>{{currentTimestamp}}</p>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div style="display: flex;justify-content: space-around ;    flex-wrap: wrap;" >-->
+    <!--<div style="font-size:18px">-->
+      <!--<p><span> <img src="../../../assets/images/Atmospheric%20Pressure-44%20(1).png"></span> Pressure: {{currentWeather.main.pressure| number : '1.2-2'}} inHG</p>-->
+      <!--<p><span> <img src="../../../assets/images/Humidity_44px.png"></span>Humidity: {{currentWeather.main.humidity }}%</p>-->
+      <!--<p><span> <img src="../../../assets/images/Wind%20Speed%2098-102_44px.png"></span>Wind Speed : {{currentWeather.wind.speed}} m/sec</p>-->
+    <!--</div>-->
+    <!--<div style="border: 1px solid #fff;height: 160px;"></div>-->
+    <!--<div style="display: flex;flex-direction: column;align-items: center;margin-top: -10px; line-height: 10px;">-->
+      <!--<p style="font-size: 23px;font-weight: 600;">{{this.Math.round(currentWeather.main.temp)}} &deg;C </p>-->
+      <!--<img height=100px; width=100px src="https://openweathermap.org/img/w/{{currentWeather.weather[0].icon}}.png" class='img img-responsive center-block'>-->
+      <!--<p style="font-size: 18px">{{currentWeather.weather["0"].description}}</p>-->
+      <!--<p style="padding-top:8px" (click)="refreshData()">Last update at: {{lastUpdateAt}} <span><i class="fa fa-refresh"></i></span></p>-->
+    <!--</div>-->
+    <!--<div style="border: 1px solid  #fff;height: 160px;"></div>-->
+    <!--<div style="font-size:18px" >-->
+      <!--<p>Min temp</p>-->
+      <!--<p>{{this.Math.round(currentWeather.main.temp_min )}} &deg;C <span> <img src="../../../assets/images/Thermometer-44.png"></span></p>-->
+      <!--<p style="border: 1px solid  #fff"></p>-->
+      <!--<p>Min temp</p>-->
+      <!--<p>{{this.Math.round(currentWeather.main.temp_max  )}} &deg;C<span> <img src="../../../assets/images/Thermometer-44.png"></span></p>-->
+    <!--</div>-->
+  <!--</div>-->
+
+
+
+  <!--<div  class="row col-sm-12  d-flex" style="justify-content: space-evenly;padding-bottom: 20px;margin-top: 30px;">-->
+  <!--<div class="">-->
+    <!--<p style="font-size: 22px;font-weight: 600;">{{this.Math.round(currentWeather.main.temp)}} &deg;C </p>-->
+    <!--<p style="font-size: 22px;"> {{currentDate}}</p>-->
+  <!--</div>-->
+    <!--<div class="" style="border: 1px solid #fff;height: 70px;"></div>-->
+    <!--<div class="row col-sm-8 d-flex" style="justify-content: space-evenly">-->
+      <!--<div style="font-size:18px;    text-align: center;" *ngFor="let weather of forecast" >-->
+        <!--<p>{{weather.dt_txt| date : 'EEEE '}}</p>-->
+        <!--<img height=100px; width=100px src="https://openweathermap.org/img/w/{{weather.weather[0].icon}}.png" class='img img-responsive center-block' (click)="setWeatherDetail(weather);">-->
+
+        <!--<p>{{weather.main.temp}} &deg;C</p>-->
+        <!--<p>{{weather.weather[0].description}}</p>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
 <div  class="container card forcast" style="margin-top:6px;">
-  <div style="display: flex;justify-content: space-around ;font-size: 22px; flex-wrap: wrap;  padding-top: 40px;" >
-    <div>
+  <div style="font-size: 22px; flex-wrap: wrap;  padding-top: 40px;" class="location row col-lg-12" >
+    <div class="col-md-3 col-sm-12 img-with-text">
       <img src="../../../assets/images/Marker_64px.png">
       <p>Weather Forcast in</p>
     </div>
-    <div>
+    <div  class="col-md-3 col-sm-12">
       <p>{{location}}</p>
     </div>
-    <div>
+    <div  class="col-md-3 col-sm-12">
       <p>{{currentTimestamp}}</p>
     </div>
   </div>
-  <div style="display: flex;justify-content: space-around ;    flex-wrap: wrap;" >
+  <div class="weather-info-for-desktop" style="display: flex;justify-content: space-around ;    flex-wrap: wrap;" >
     <div style="font-size:18px">
       <p><span> <img src="../../../assets/images/Atmospheric%20Pressure-44%20(1).png"></span> Pressure: {{currentWeather.main.pressure| number : '1.2-2'}} inHG</p>
       <p><span> <img src="../../../assets/images/Humidity_44px.png"></span>Humidity: {{currentWeather.main.humidity }}%</p>
       <p><span> <img src="../../../assets/images/Wind%20Speed%2098-102_44px.png"></span>Wind Speed : {{currentWeather.wind.speed}} m/sec</p>
     </div>
-    <div style="border: 1px solid #fff;height: 160px;"></div>
+    <div style="border: 1px solid #fff;height: 160px;" class="border-between-div"></div>
     <div style="display: flex;flex-direction: column;align-items: center;margin-top: -10px; line-height: 10px;">
       <p style="font-size: 23px;font-weight: 600;">{{this.Math.round(currentWeather.main.temp)}} &deg;C </p>
       <img height=100px; width=100px src="https://openweathermap.org/img/w/{{currentWeather.weather[0].icon}}.png" class='img img-responsive center-block'>
       <p style="font-size: 18px">{{currentWeather.weather["0"].description}}</p>
       <p style="padding-top:8px" (click)="refreshData()">Last update at: {{lastUpdateAt}} <span><i class="fa fa-refresh"></i></span></p>
     </div>
-    <div style="border: 1px solid  #fff;height: 160px;"></div>
-    <div style="font-size:180x" >
+    <div style="border: 1px solid  #fff;height: 160px;"  class="border-between-div"></div>
+    <div style="font-size:18px" >
       <p>Min temp</p>
-      <p>{{this.Math.round(currentWeather.main.temp_min )}} &deg;C <span> <img src="../../../assets/images/Thermometer-44.png"></span></p>
+      <p  style="font-size: 18px;font-weight: 600;">{{this.Math.round(currentWeather.main.temp_min )}} &deg;C <span> <img src="../../../assets/images/Thermometer-44.png"></span></p>
       <p style="border: 1px solid  #fff"></p>
       <p>Min temp</p>
-      <p>{{this.Math.round(currentWeather.main.temp_max  )}} &deg;C<span> <img src="../../../assets/images/Thermometer-44.png"></span></p>
+      <p  style="font-size: 18px;font-weight: 600;">{{this.Math.round(currentWeather.main.temp_max  )}} &deg;C<span> <img src="../../../assets/images/Thermometer-44.png"></span></p>
     </div>
   </div>
 
+  <hr class="weather-info-for-mobile">
+
+  <div class="weather-info-for-mobile" style="text-align: center" >
+    <div style="font-size:18px" >
+      <p><span> <img src="../../../assets/images/Atmospheric%20Pressure-44%20(1).png"></span> Pressure: {{currentWeather.main.pressure| number : '1.2-2'}} inHG</p>
+      <p><span> <img src="../../../assets/images/Humidity_44px.png"></span>Humidity: {{currentWeather.main.humidity }}%</p>
+      <p><span> <img src="../../../assets/images/Wind%20Speed%2098-102_44px.png"></span>Wind Speed : {{currentWeather.wind.speed}} m/sec</p>
+    </div>
+    <hr>
+    <div style="display: flex;flex-direction: column;align-items: center;margin-top: -10px; line-height: 10px;">
+      <p style="font-size: 23px;font-weight: 600;">{{this.Math.round(currentWeather.main.temp)}} &deg;C </p>
+      <img height=100px; width=100px src="https://openweathermap.org/img/w/{{currentWeather.weather[0].icon}}.png" class='img img-responsive center-block'>
+      <p style="font-size: 18px">{{currentWeather.weather["0"].description}}</p>
+      <p style="padding-top:8px" (click)="refreshData()">Last update at: {{lastUpdateAt}} <span><i class="fa fa-refresh"></i></span></p>
+    </div>
+    <hr>
+    <div style="font-size:18px" >
+      <p>Min temp</p>
+      <p  style="font-size: 18px;font-weight: 600;">{{this.Math.round(currentWeather.main.temp_min )}} &deg;C <span> <img src="../../../assets/images/Thermometer-44.png"></span></p>
+      <p style="border: 1px solid #fff;margin: 7px 35%;"></p>
+      <p>Min temp</p>
+      <p  style="font-size: 18px;font-weight: 600;">{{this.Math.round(currentWeather.main.temp_max  )}} &deg;C<span> <img src="../../../assets/images/Thermometer-44.png"></span></p>
+    </div>
+  </div>
+
+  <hr class="weather-info-for-mobile">
 
 
-  <div  class="row col-sm-12  d-flex" style="justify-content: space-evenly;padding-bottom: 20px;margin-top: 30px;">
-<div class="">
-  <p style="font-size: 22px;">{{this.Math.round(currentWeather.main.temp)}} &deg;C </p>
-  <p style="font-size: 22px;"> {{currentDate}}</p>
-</div>
-    <div class="" style="border: 1px solid #fff;height: 70px;"></div>
-    <div class="row col-sm-8 d-flex" style="justify-content: space-evenly">
+
+
+  <!--<div class="weather-info row col-lg-12 " >-->
+    <!--<div class="col-md-4 col-sm-12" style="font-size:18px">-->
+      <!--<p><span> <img src="../../../assets/images/Atmospheric%20Pressure-44%20(1).png"></span> Pressure: {{currentWeather.main.pressure| number : '1.2-2'}} inHG</p>-->
+      <!--<p><span> <img src="../../../assets/images/Humidity_44px.png"></span>Humidity: {{currentWeather.main.humidity }}%</p>-->
+      <!--<p><span> <img src="../../../assets/images/Wind%20Speed%2098-102_44px.png"></span>Wind Speed : {{currentWeather.wind.speed}} m/sec</p>-->
+    <!--</div>-->
+    <!--<div class="col-md-1" style="border: 1px solid #fff;height: 160px;" class="border-between-div"></div>-->
+    <!--<div class="col-md-4" style="display: flex;flex-direction: column;align-items: center;margin-top: -10px; line-height: 10px;">-->
+      <!--<p style="font-size: 23px;font-weight: 600;">{{this.Math.round(currentWeather.main.temp)}} &deg;C </p>-->
+      <!--<img height=100px; width=100px src="https://openweathermap.org/img/w/{{currentWeather.weather[0].icon}}.png" class='img img-responsive center-block'>-->
+      <!--<p style="font-size: 18px">{{currentWeather.weather["0"].description}}</p>-->
+      <!--<p style="padding-top:8px" (click)="refreshData()">Last update at: {{lastUpdateAt}} <span><i class="fa fa-refresh"></i></span></p>-->
+    <!--</div>-->
+    <!--<div class="col-md-1" style="border: 1px solid  #fff;height: 160px;"  class="border-between-div"></div>-->
+    <!--<div class="col-md-3" style="font-size:18px" >-->
+      <!--<p>Min temp</p>-->
+      <!--<p>{{this.Math.round(currentWeather.main.temp_min )}} &deg;C <span> <img src="../../../assets/images/Thermometer-44.png"></span></p>-->
+      <!--<p style="border: 1px solid  #fff"></p>-->
+      <!--<p>Min temp</p>-->
+      <!--<p>{{this.Math.round(currentWeather.main.temp_max  )}} &deg;C<span> <img src="../../../assets/images/Thermometer-44.png"></span></p>-->
+    <!--</div>-->
+  <!--</div>-->
+
+
+  <div  class="row col-sm-12 forcast-desktop d-flex" style="justify-content: space-evenly;padding-bottom: 20px;margin-top: 30px;">
+    <div class="col-lg-2" style="text-align: center">
+      <p style="font-size: 22px;font-weight: 600;">{{this.Math.round(currentWeather.main.temp)}} &deg;C   </p>
+      <p style="font-size: 22px;"> {{currentDate}}</p>
+    </div>
+    <div class="" style="border: 1px solid #fff;"  class="border-between-div forcast-break-div"></div>
+    <hr class="forcast-hr">
+    <div class="row col-lg-10 col-sm-12 d-flex" style="justify-content: space-evenly">
       <div style="font-size:18px;    text-align: center;" *ngFor="let weather of forecast" >
         <p>{{weather.dt_txt| date : 'EEEE '}}</p>
         <img height=100px; width=100px src="https://openweathermap.org/img/w/{{weather.weather[0].icon}}.png" class='img img-responsive center-block' (click)="setWeatherDetail(weather);">
 
-        <p>{{weather.main.temp}} &deg;C</p>
+        <p>{{weather.main.temp}} &deg;C </p>
         <p>{{weather.weather[0].description}}</p>
       </div>
     </div>
   </div>
-</div>
 
+  <div  class="row col-sm-12 forcast-mobile" style="justify-content: space-evenly;padding-bottom: 20px;margin-top: 30px;">
+    <div class="" style="text-align: center">
+      <p style="font-size: 22px;font-weight: 600;">{{this.Math.round(currentWeather.main.temp)}} &deg;C  </p>
+      <p style="font-size: 22px;"> {{currentDate}}</p>
+    </div>
+    <div class="" style="border: 1px solid #fff;height: 70px;"  class="border-between-div"></div>
+    <hr>
+    <div class="row col-lg-8 col-sm-12 d-flex" style="justify-content: space-evenly">
+      <div style="font-size:18px;    text-align: center;" *ngFor="let weather of forecast" >
+        <p>{{weather.dt_txt| date : 'EEEE '}}</p>
+        <img height=100px; width=100px src="https://openweathermap.org/img/w/{{weather.weather[0].icon}}.png" class='img img-responsive center-block' (click)="setWeatherDetail(weather);">
+
+        <p>{{weather.main.temp}} &deg;C </p>
+        <p>{{weather.weather[0].description}}</p>
+      </div>
+    </div>
+  </div>
+
+</div>

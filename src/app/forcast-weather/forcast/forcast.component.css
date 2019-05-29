@@ -7,9 +7,81 @@ p{
   max-height: 100%;
   border-radius: 5px;
   position: relative;
+  font-family: 'Dosis', sans-serif !important;
 }
 .card.forcast{
   /* background: linear-gradient(to right, rgb(65, 41, 90), rgb(47, 7, 67)); */
   /*background: linear-gradient(to right, rgb(195, 20, 50), rgb(36, 11, 54));*/
   background-image: linear-gradient(-20deg, rgb(97, 97, 97) 0%, rgb(155, 197, 195) 100%);
+}
+
+@media(max-width:768px) {
+
+  .location {
+    text-align: center;
+  }
+
+  .border-between-div {
+    display: none;
+  }
+
+  .weather-info-for-desktop {
+    display: none !important;
+  }
+
+  .forcast-desktop {
+    display: none !important;
+  }
+  .forcast-mobile{
+    display: block !important;
+  }
+  .weather-info-for-mobile {
+    display: block !important;
+  }
+}
+
+
+@media(min-width:768px) {
+  .location{
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+  }
+  .img-with-text{
+    text-align: right;
+  }
+  .location>div>p{
+
+    text-align: right;
+  }
+  .weather-info-for-desktop {
+    display: flex !important;
+  }
+
+  .forcast-desktop {
+    display: flex !important;
+  }
+  .forcast-mobile{
+    display: none !important;
+  }
+  .weather-info-for-mobile {
+    display: none !important;
+  }
+}
+@media(max-width:990px) {
+  .forcast-break-div{
+    display: none !important;
+  }
+  .forcast-hr{
+    display: block;
+    margin: 40px 0px;
+
+  }
+}
+@media(min-width:990px) {
+
+  .forcast-hr{
+    display: none;
+
+  }
 }

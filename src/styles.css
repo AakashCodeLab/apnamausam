@@ -55,7 +55,8 @@ nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
 img{max-width:100%;}
 /*-- end reset --*/
 body {
-    font-family: 'Open Sans', sans-serif;
+    /*font-family: 'Open Sans', sans-serif;*/
+    font-family: 'Dosis', sans-serif !important;
     /* background: url(./app/images/a.jpg)no-repeat 0px 0px; */
     background: linear-gradient(to right, rgb(15, 12, 41), rgb(48, 43, 99), rgb(36, 36, 62));
     background-attachment: fixed;
@@ -80,7 +81,8 @@ h1 {
     color: #00bbb4;
     text-align: right;
     margin-right: 2em;
-	font-family: 'Lora', serif;
+	/*font-family: 'Lora', serif;*/
+  font-family: 'Dosis', sans-serif !important;
 }
 .main-wthree-row {
     width: 30%;
@@ -131,7 +133,8 @@ div#txt {
     font-size: 2em;
     font-weight: 200;
     letter-spacing: 3px;
-	font-family: 'Lora', serif;
+	/*font-family: 'Lora', serif;*/
+  font-family: 'Dosis', sans-serif !important;
 }
 .date {
     font-size: 0.9em;
