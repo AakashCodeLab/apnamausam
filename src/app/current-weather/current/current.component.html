@@ -36,10 +36,9 @@ type="ball-scale-multiple">
     </div>
     <div class="w3ls-bottom">
       <h2>Today's Weather </h2>
-      <div id="owl-demo" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
+     <!-- <div id="owl-demo" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
         <div *ngIf="hourlyWeather.length>0" class="owl-wrapper-outer">
-          <div  [ngClass]="{'transweather': period==1, 'transweatherStart':period==0 }"
-          class="owl-wrapper" style="width: 1690px; left: 0px; display: block;transition: all 800ms ease 0s;">
+          <div  class="owl-wrapper" style="width: 1690px; left: 0px; display: block;transition: all 800ms ease 0s;">
           <div class="owl-item" style="width: 65px;" *ngFor="let hourlyweather of hourlyWeather">
             <div class="item">
           <div class="biseller-column">
@@ -55,7 +54,25 @@ type="ball-scale-multiple">
     </div>
 
       <div class="owl-controls clickable">
-        <div class="owl-pagination"><div class="owl-page"><span class=""></span></div><div class="owl-page active"><span class=""></span></div><div class="owl-page"><span class=""></span></div></div></div></div>
+        <div class="owl-pagination"><div class="owl-page"><span class=""></span></div><div class="owl-page active"><span class=""></span></div><div class="owl-page"><span class=""></span></div></div></div></div>-->
+
+      <swiper [config]="config">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide biseller-column" *ngFor="let hourlyweather of hourlyWeather" >
+            <p style="">{{hourlyweather.dt_txt}}</p>
+            <a class="lightbox" href="#">
+              <img src="https://openweathermap.org/img/w/{{hourlyweather.weather[0].icon}}.png" alt="">
+            </a>
+            <p>{{hourlyweather.main.temp}}<sup class="degree">°</sup></p>
+          </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+
+      </swiper>
+
+
     </div>
     <div class="w3ls-bottom2">
       <div class="ac-container">

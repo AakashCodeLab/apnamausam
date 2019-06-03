@@ -15,3 +15,14 @@ body{
 .transweathermiddle{
     transform: translate3d(-120px, 0px, 0px);
 }
+swiper{
+
+  width: 90%;
+  margin: auto;
+}
+
+.swiper-slide{
+  img{
+    width: 100%;
+  }
+}

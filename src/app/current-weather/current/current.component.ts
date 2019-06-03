@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {WeatherDataService} from '../../services/weather-service.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -6,9 +6,30 @@ import {MatSnackBar} from '@angular/material';
 @Component({
   selector: 'app-current',
   templateUrl: './current.component.html',
-  styleUrls: ['./current.component.css']
+  styleUrls: ['./current.component.scss']
 })
-export class CurrentComponent implements OnInit {
+export class CurrentComponent implements OnInit, AfterViewInit {
+  mySwiper: Swiper;
+  config: SwiperOptions;
+
+
+
+  // config: SwiperOptions = {
+  //   autoplay: 3000, // Autoplay option having value in milliseconds
+  //   initialSlide: 0, // Slide Index Starting from 0
+  //   slidesPerView: 8, // Slides Visible in Single View Default is 1
+  //   pagination: '.swiper-pagination', // Pagination Class defined
+  //   paginationClickable: true, // Making pagination dots clicable
+  //   nextButton: '.swiper-button-next', // Class for next button
+  //   prevButton: '.swiper-button-prev', // Class for prev button
+  //   spaceBetween: 30 // Space between each Item
+  // };
+
+  slides = [
+    'https://via.placeholder.com/300x200/FF5733/ffffff',
+    'https://via.placeholder.com/300x200/C70039/ffffff',
+    'https://via.placeholder.com/300x200/900C3F/ffffff'
+  ];
   lat: any = 19.1726;
   lng: any = 72.9425;
   currentTimestamp;
@@ -49,18 +70,21 @@ export class CurrentComponent implements OnInit {
     this.currentDate = new Date().toDateString();
     this.getCurrentLocation();
 
-    setInterval(() => {
-     if (this.period !== 0) {
-        this.period = 0;
-    } else {
-        this.period = 1;
-    }
-
-    }, 1500);
 
 
 
 
+
+  }
+
+  ngAfterViewInit() {
+    this.config = {
+      autoplay: 3000, // Autoplay option having value in milliseconds
+      initialSlide: 0, // Slide Index Starting from 0
+      slidesPerView: 7, // Slides Visible in Single View Default is 1
+      pagination: '.swiper-pagination',
+      spaceBetween: 20 // Space between each Item
+    };
   }
   getCurrentLocation() {
     this.spinner.show();
