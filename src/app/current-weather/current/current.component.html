@@ -1,11 +1,11 @@
 <app-header-nav  (messageEventFromHeader)="receiveMessageFromHeaderNavbar($event)" ></app-header-nav>
 <ngx-spinner
-bdColor="rgba(51,51,51,0.8)"
-size="medium"
-color="#fff"
-type="ball-scale-multiple">
-<p style="font-size: 20px; color: white;position: relative; top:40px;">Getting weather data...</p>
-></ngx-spinner>
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white;position: relative; top:40px;">Getting weather data...</p>
+  ></ngx-spinner>
 
 
 
@@ -26,7 +26,7 @@ type="ball-scale-multiple">
             <div class="dmy">
               <div id="txt">{{currentTimestamp}}</div>
               <div class="date">
-               {{currentDate}}
+                {{currentDate}}
               </div>
             </div>
             <div class="clear"></div>
@@ -36,26 +36,53 @@ type="ball-scale-multiple">
     </div>
     <div class="w3ls-bottom">
       <h2>Today's Weather </h2>
-      <div id="owl-demo" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
+   <!--   <div id="owl-demo" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
         <div *ngIf="hourlyWeather.length>0" class="owl-wrapper-outer">
           <div  [ngClass]="{'transweather': period==1, 'transweatherStart':period==0 }"
-          class="owl-wrapper" style="width: 1690px; left: 0px; display: block;transition: all 800ms ease 0s;">
-          <div class="owl-item" style="width: 65px;" *ngFor="let hourlyweather of hourlyWeather">
-            <div class="item">
-          <div class="biseller-column">
-            <p>{{hourlyweather.dt_txt}}</p>
-            <a class="lightbox" href="#">
+                class="owl-wrapper" style="width: 1690px; left: 0px; display: block;transition: all 800ms ease 0s;">
+            <div class="owl-item" style="width: 65px;" *ngFor="let hourlyweather of hourlyWeather">
+              <div class="item">
+                <div class="biseller-column">
+                  <p>{{hourlyweather.dt_txt}}</p>
+                  <a class="lightbox" href="#">
+                    <img src="https://openweathermap.org/img/w/{{hourlyweather.weather[0].icon}}.png" alt="">
+                  </a>
+                  <p>{{hourlyweather.main.temp}}<sup class="degree">°</sup></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="owl-controls clickable">
+          <div class="owl-pagination"><div class="owl-page"><span class=""></span></div><div class="owl-page active"><span class=""></span></div><div class="owl-page"><span class=""></span></div></div></div></div>-->
+
+    <!--  <owl-carousel [options]="mySlideOptions" [items]="images" [carouselClasses]="['owl-theme', 'sliding']" >
+        <div class="item" *ngFor="let image of mySlideImages;let i = index">
+          <div>
+            <img src={{image}}/>
+          </div>
+        </div>
+      </owl-carousel>-->
+
+
+      <swiper [config]="config" style="margin-top: 20px;">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide biseller-column" *ngFor="let hourlyweather of hourlyWeather">
+            <p style="">{{hourlyweather.dt_txt}}</p>
+            <a class="lightbox" style="width: 33px;height: 33px;" href="#">
               <img src="https://openweathermap.org/img/w/{{hourlyweather.weather[0].icon}}.png" alt="">
             </a>
             <p>{{hourlyweather.main.temp}}<sup class="degree">°</sup></p>
           </div>
-            </div>
-          </div>
-      </div>
-    </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
 
-      <div class="owl-controls clickable">
-        <div class="owl-pagination"><div class="owl-page"><span class=""></span></div><div class="owl-page active"><span class=""></span></div><div class="owl-page"><span class=""></span></div></div></div></div>
+      </swiper>
+
+
     </div>
     <div class="w3ls-bottom2">
       <div class="ac-container">
@@ -71,7 +98,7 @@ type="ball-scale-multiple">
                 <li class="wthree-temp"> {{hourlyweather.main.temp_min}} <sup class="degree">°</sup></li>
                 <li class="wthree-temp"> {{hourlyweather.main.temp_max}} <sup class="degree">°</sup></li>
 
-         </ul>
+              </ul>
               <div class="clear"> </div>
             </div>
           </div>

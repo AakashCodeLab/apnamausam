@@ -37,6 +37,7 @@ import { OfflineComponent } from './offline/offline.component';
     HttpClientModule,
     FormsModule,
     NgxSpinnerModule,
+
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
      // apiKey: 'AIzaSyDeoGwJDBE4ic-btiuWCfLk37ehqk2LxPs',

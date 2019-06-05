@@ -4,7 +4,8 @@ import { CurrentWeatherRoutingModule } from './current-weather-routing.module';
 import { CurrentComponent } from './current/current.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import {SharedModule} from '../shared/shared.module';
-
+import {OwlModule} from 'ngx-owl-carousel';
+import {SwiperModule} from 'angular2-useful-swiper';
 
 @NgModule({
   declarations: [CurrentComponent],
@@ -12,7 +13,9 @@ import {SharedModule} from '../shared/shared.module';
     CommonModule,
     CurrentWeatherRoutingModule,
     NgxSpinnerModule,
-    SharedModule
+    SharedModule,
+    OwlModule,
+    SwiperModule
   ]
 })
 export class CurrentWeatherModule { }

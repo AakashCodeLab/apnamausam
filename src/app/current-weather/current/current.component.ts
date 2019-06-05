@@ -3,10 +3,11 @@ import {WeatherDataService} from '../../services/weather-service.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import {MatSnackBar} from '@angular/material';
+
 @Component({
   selector: 'app-current',
   templateUrl: './current.component.html',
-  styleUrls: ['./current.component.css']
+  styleUrls: ['./current.component.scss']
 })
 export class CurrentComponent implements OnInit {
   lat: any = 19.1726;
@@ -41,12 +42,25 @@ export class CurrentComponent implements OnInit {
     this.Math = Math;
   }
   period = 0;
-  timeinterval;
+  
+  mySlideImages=[];
+  myCarouselImages;
+  mySlideOptions;
+  myCarouselOptions;
+  config: SwiperOptions = {
+    autoplay: 3000, // Autoplay option having value in milliseconds
+    initialSlide: 0, // Slide Index Starting from 0
+    slidesPerView: 7, // Slides Visible in Single View Default is 1
+
+    spaceBetween: 50 // Space between each Item
+  };
   ngOnInit() {
-    setInterval(() => {
+   this.mySlideImages = [1, 2 , 3].map((i)=> `https://picsum.photos/640/480`);
+   this.mySlideOptions = {items: 1, dots: false, nav: false, autoplay: true};
+   setInterval(() => {
       this.currentTimestamp = new Date().toLocaleTimeString();
     }, 1000);
-    this.currentDate = new Date().toDateString();
+   this.currentDate = new Date().toDateString();
     this.getCurrentLocation();
 
     setInterval(() => {
@@ -152,6 +166,8 @@ export class CurrentComponent implements OnInit {
         hoursdata.dt_txt = this.formatAMPM(new Date(hoursdata.dt_txt));
        });
       console.log( this.hourlyWeather);
+
+
 
       this.spinner.hide();
     }, error => {
