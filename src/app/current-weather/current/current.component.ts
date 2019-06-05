@@ -11,7 +11,7 @@ import {MatSnackBar} from '@angular/material';
 })
 export class CurrentComponent implements OnInit, AfterViewInit {
   mySwiper: Swiper;
-  config: SwiperOptions;
+  //config: SwiperOptions;
 
 
 
