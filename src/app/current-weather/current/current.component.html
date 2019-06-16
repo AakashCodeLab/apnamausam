@@ -70,7 +70,7 @@
         <div class="swiper-wrapper">
           <div class="swiper-slide biseller-column" *ngFor="let hourlyweather of hourlyWeather">
             <p style="">{{hourlyweather.dt_txt}}</p>
-            <a class="lightbox" style="width: 33px;height: 33px;" href="#">
+            <a class="lightbox" style="width: 33px;height: 33px;">
               <img src="https://openweathermap.org/img/w/{{hourlyweather.weather[0].icon}}.png" alt="">
             </a>
             <p>{{hourlyweather.main.temp}}<sup class="degree">°</sup></p>
