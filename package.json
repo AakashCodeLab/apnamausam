@@ -32,7 +32,7 @@
     "core-js": "^2.5.4",
     "express": "^4.17.0",
     "googlemaps": "^1.12.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "ng-connection-service": "^1.0.4",
     "ngx-owl-carousel": "^2.0.7",
     "ngx-spinner": "^7.1.4",
